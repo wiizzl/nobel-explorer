@@ -3,6 +3,9 @@ import "./globals.css";
 import type { Metadata } from "next";
 import LocalFont from "next/font/local";
 
+import { Footer } from "@/components/layout/footer";
+import { Header } from "@/components/layout/header";
+
 import { config } from "@/config";
 
 const Nobel = LocalFont({
@@ -32,7 +35,11 @@ type RootLayoutProps = Readonly<{
 export default function RootLayout(props: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={`${Nobel.variable} antialiased selection:bg-muted/50`}>{props.children}</body>
+      <body className={`${Nobel.variable} antialiased selection:bg-accent-foreground/20`}>
+        <Header />
+        {props.children}
+        <Footer />
+      </body>
     </html>
   );
 }

@@ -7,6 +7,18 @@ const config = {
     name: "Pierre Houllière",
     url: "https://houlliere.com",
   },
+
+  credit: {
+    name: "Nobel Prize API",
+    url: "https://nobelprize.org",
+  },
+
+  navigation: [
+    { label: "Home", href: "" },
+    { label: "Search", href: "search" },
+    { label: "Laureates", href: "laureates" },
+    { label: "Timeline", href: "timeline" },
+  ],
 };
 
 export { config };
