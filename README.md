@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="100%" src=".github/assets/banner.png" alt="Banner for Nobel Explorer project." style="border-radius: 10px;">
+  <img width="100%" src=".github/assets/banner.png" alt="Banner for Nobel Explorer project.">
 </p>
 
 <p align="center">
