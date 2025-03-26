@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   keywords: config.keywords,
   authors: [{ name: config.creator.name, url: config.creator.url }],
   creator: config.creator.name,
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL("https://nobel-explorer-eight.vercel.app"),
 };
 
 type RootLayoutProps = Readonly<{
