@@ -16,7 +16,6 @@ const config = {
   navigation: [
     { label: "Home", href: "" },
     { label: "Search", href: "search" },
-    { label: "Timeline", href: "timeline" },
   ],
 };
 
