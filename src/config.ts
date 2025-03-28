@@ -13,6 +13,8 @@ const config = {
     url: "https://nobelprize.org",
   },
 
+  api: "https://api.nobelprize.org/v1",
+
   navigation: [
     { label: "Home", href: "" },
     { label: "Search", href: "search" },

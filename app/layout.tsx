@@ -5,6 +5,7 @@ import LocalFont from "next/font/local";
 
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { Toaster } from "@/components/ui/sonner";
 
 import { config } from "@/config";
 
@@ -39,6 +40,7 @@ export default function RootLayout(props: RootLayoutProps) {
         <Header />
         {props.children}
         <Footer />
+        <Toaster />
       </body>
     </html>
   );
