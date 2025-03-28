@@ -6,54 +6,60 @@ import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 
 import { fetchData } from "@/features/data/data.action";
-import { LaureatesSchema } from "@/features/data/schemas/laureate.schema";
-import { PrizesSchema } from "@/features/data/schemas/prize.schema";
+import { Laureates, LaureatesSchema } from "@/features/data/schemas/laureate.schema";
+import { Prizes, PrizesSchema } from "@/features/data/schemas/prize.schema";
 
 const SearchBar = () => {
   const [, startTransition] = useTransition();
   const [inputValue, setInputValue] = useState("");
 
-  const handleInputChange = (value: string) => {
+  const filterLaureates = (laureatesData: Laureates, searchValue: string) => {
+    const parsedLaureates = LaureatesSchema.parse(laureatesData);
+    const searchWords = searchValue.split(" ");
+
+    return parsedLaureates.laureates.filter((laureate) => {
+      const fullName = [laureate.firstname, laureate.surname]
+        .filter(Boolean)
+        .map((name) => (name ?? "").toLowerCase())
+        .join(" ");
+      return searchWords.every((word) => fullName.includes(word));
+    });
+  };
+
+  const filterPrizes = (prizesData: Prizes, searchValue: string) => {
+    const parsedPrizes = PrizesSchema.parse(prizesData);
+    return parsedPrizes.prizes.filter((prize) => prize.year.includes(searchValue));
+  };
+
+  const handleInputChange = async (value: string) => {
     const trimmedValue = value.trim().toLowerCase();
     setInputValue(value);
 
     if (!trimmedValue) return; // Avoid unnecessary API calls for empty input
 
-    startTransition(() => {
-      Promise.all([fetchData("laureate"), fetchData("prize")])
-        .then(([laureatesData, prizesData]) => {
-          try {
-            const parsedLaureates = LaureatesSchema.parse(laureatesData);
-            const parsedPrizes = PrizesSchema.parse(prizesData);
+    startTransition(async () => {
+      try {
+        const [laureatesData, prizesData] = await Promise.all([fetchData("laureate"), fetchData("prize")]);
 
-            const filteredLaureates = parsedLaureates.laureates.filter(
-              (laureate: { firstname: string; surname?: string }) =>
-                laureate.firstname.toLowerCase().includes(trimmedValue) ||
-                (laureate.surname && laureate.surname.toLowerCase().includes(trimmedValue))
-            );
-            const filteredPrizes = parsedPrizes.prizes.filter((prize) => prize.year.includes(trimmedValue));
+        const filteredLaureates = filterLaureates(laureatesData, trimmedValue);
+        const filteredPrizes = filterPrizes(prizesData, trimmedValue);
 
-            console.log("Filtered Laureates:", filteredLaureates);
-            console.log("Filtered Prizes:", filteredPrizes);
+        if (filteredLaureates.length === 0 && filteredPrizes.length === 0) {
+          toast.info("No results found.");
+        }
 
-            if (filteredLaureates.length === 0 && filteredPrizes.length === 0) {
-              toast("No results found for your search.");
-            }
-          } catch (parseError) {
-            console.error("Parsing Error:", parseError);
-            toast.error("Error while processing data. Please try again.");
-          }
-        })
-        .catch((fetchError) => {
-          console.error("Fetching Error:", fetchError);
-          toast.error("Error while searching for data. Please try later.");
-        });
+        console.log("Filtered Laureates:", filteredLaureates);
+        console.log("Filtered Prizes:", filteredPrizes);
+      } catch (error) {
+        console.error("Fetching Error:", error);
+        toast.error("Error while searching for data. Please try later.");
+      }
     });
   };
 
   return (
     <Input
-      placeholder="Search for a category, year, or laureate"
+      placeholder="Search for a laureate or a year..."
       value={inputValue}
       onChange={(e) => handleInputChange(e.target.value)}
     />
