@@ -1,10 +1,9 @@
-import { z } from "zod";
+import * as z from "zod";
 
 const CitySchema = z.object({
   en: z.string(),
-  no: z.string().optional(),
-  se: z.string().optional(),
-  sameAs: z.string().optional(),
+  no: z.string(),
+  se: z.string(),
 });
 type City = z.infer<typeof CitySchema>;
 
@@ -12,17 +11,17 @@ const YNowSchema = z.object({
   en: z.string(),
   no: z.string(),
   se: z.string(),
-  sameAs: z.array(z.string()).optional(),
-  latitude: z.string().optional(),
-  longitude: z.string().optional(),
+  sameAs: z.array(z.string()),
+  latitude: z.string(),
+  longitude: z.string(),
 });
 type YNow = z.infer<typeof YNowSchema>;
 
-const NameSchema = z.object({
+const FamilyNameSchema = z.object({
   en: z.string(),
   se: z.string(),
 });
-type Name = z.infer<typeof NameSchema>;
+type FamilyName = z.infer<typeof FamilyNameSchema>;
 
 const LinkSchema = z.object({
   rel: z.string(),
@@ -59,11 +58,11 @@ const WikipediaSchema = z.object({
 type Wikipedia = z.infer<typeof WikipediaSchema>;
 
 const PlaceSchema = z.object({
-  city: CitySchema.optional(),
-  country: CitySchema.optional(),
-  cityNow: YNowSchema.optional(),
-  countryNow: YNowSchema.optional(),
-  continent: CitySchema.optional(),
+  city: CitySchema,
+  country: CitySchema,
+  cityNow: YNowSchema,
+  countryNow: YNowSchema,
+  continent: CitySchema,
   locationString: CitySchema,
 });
 type Place = z.infer<typeof PlaceSchema>;
@@ -82,7 +81,7 @@ type Affiliation = z.infer<typeof AffiliationSchema>;
 
 const BirthSchema = z.object({
   date: z.string(),
-  place: PlaceSchema.optional(),
+  place: PlaceSchema,
 });
 type Birth = z.infer<typeof BirthSchema>;
 
@@ -94,58 +93,62 @@ const NobelPrizeSchema = z.object({
   portion: z.string(),
   dateAwarded: z.string(),
   prizeStatus: z.string(),
-  motivation: CitySchema,
+  motivation: FamilyNameSchema,
   prizeAmount: z.number(),
   prizeAmountAdjusted: z.number(),
-  affiliations: z.array(AffiliationSchema).optional(),
+  affiliations: z.array(AffiliationSchema),
   links: z.array(LinkSchema),
 });
 type NobelPrize = z.infer<typeof NobelPrizeSchema>;
 
-const LaureateSchema = z.object({
-  id: z.string(),
-  knownName: NameSchema,
-  givenName: NameSchema,
-  familyName: NameSchema,
-  fullName: NameSchema,
-  fileName: z.string(),
-  gender: z.string(),
-  birth: BirthSchema,
-  death: BirthSchema.optional(),
-  wikipedia: WikipediaSchema,
-  wikidata: WikidataSchema,
-  sameAs: z.array(z.string()),
-  links: z.array(LinkSchema),
-  nobelPrizes: z.array(NobelPrizeSchema),
-  meta: MetaSchema,
-});
+const LaureateSchema = z.array(
+  z.object({
+    id: z.string(),
+    knownName: FamilyNameSchema,
+    givenName: FamilyNameSchema,
+    familyName: FamilyNameSchema,
+    fullName: FamilyNameSchema,
+    fileName: z.string(),
+    gender: z.string(),
+    birth: BirthSchema,
+    wikipedia: WikipediaSchema,
+    wikidata: WikidataSchema,
+    sameAs: z.array(z.string()),
+    links: z.array(LinkSchema),
+    nobelPrizes: z.array(NobelPrizeSchema),
+    meta: MetaSchema,
+  })
+);
 type Laureate = z.infer<typeof LaureateSchema>;
+
+export type {
+  Affiliation,
+  Birth,
+  City,
+  Continent,
+  FamilyName,
+  Laureate,
+  Link,
+  Meta,
+  NobelPrize,
+  Place,
+  Wikidata,
+  Wikipedia,
+  YNow,
+};
 
 export {
   AffiliationSchema,
   BirthSchema,
   CitySchema,
   ContinentSchema,
+  FamilyNameSchema,
   LaureateSchema,
   LinkSchema,
   MetaSchema,
-  NameSchema,
   NobelPrizeSchema,
   PlaceSchema,
   WikidataSchema,
   WikipediaSchema,
   YNowSchema,
-  type Affiliation,
-  type Birth,
-  type City,
-  type Continent,
-  type Laureate,
-  type Link,
-  type Meta,
-  type Name,
-  type NobelPrize,
-  type Place,
-  type Wikidata,
-  type Wikipedia,
-  type YNow,
 };
