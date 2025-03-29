@@ -6,6 +6,7 @@ const config = {
   creator: {
     name: "Pierre Houllière",
     url: "https://houlliere.com",
+    source: "https://github.com/wiizzl/nobel-explorer",
   },
 
   credit: {

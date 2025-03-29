@@ -17,6 +17,12 @@ const Footer = () => {
             {config.credit.name}
           </Link>
         </p>
+        <p className="text-xs text-muted-foreground mt-2">
+          Code can be found on{" "}
+          <Link href={config.creator.source} target="_blank" className="underline">
+            GitHub
+          </Link>
+        </p>
       </MaxWidthWrapper>
     </footer>
   );
