@@ -5,7 +5,7 @@ import { PaginationWithLinks } from "@/components/ui/pagination-with-links";
 import { LaureateGrid } from "@/features/laureates/laureate-grid";
 
 type LaureatesPageProps = {
-  searchParams: { [key: string]: string | undefined };
+  searchParams: Promise<{ [key: string]: string | undefined }>;
 };
 
 export default async function LaureatesPage(props: LaureatesPageProps) {
