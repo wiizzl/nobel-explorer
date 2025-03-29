@@ -5,8 +5,8 @@ import { toast } from "sonner";
 
 import { Input } from "@/components/ui/input";
 
-import { Laureates, LaureatesSchema } from "@/features/data/schemas/laureate.schema";
-import { Prizes, PrizesSchema } from "@/features/data/schemas/prize.schema";
+import { Laureates } from "@/features/data/schemas/laureate.schema";
+import { Prizes } from "@/features/data/schemas/prize.schema";
 
 type SearchBarProps = {
   laureatesData: Laureates;
@@ -18,10 +18,9 @@ const SearchBar = (props: SearchBarProps) => {
   const [inputValue, setInputValue] = useState("");
 
   const filterLaureates = (laureatesData: Laureates, searchValue: string) => {
-    const parsedLaureates = LaureatesSchema.parse(laureatesData);
     const searchWords = searchValue.split(" ");
 
-    return parsedLaureates.laureates.filter((laureate) => {
+    return laureatesData.laureates.filter((laureate) => {
       const fullName = [laureate.firstname, laureate.surname]
         .filter(Boolean)
         .map((name) => (name ?? "").toLowerCase())
@@ -31,8 +30,7 @@ const SearchBar = (props: SearchBarProps) => {
   };
 
   const filterPrizes = (prizesData: Prizes, searchValue: string) => {
-    const parsedPrizes = PrizesSchema.parse(prizesData);
-    return parsedPrizes.prizes.filter((prize) => prize.year.includes(searchValue));
+    return prizesData.prizes.filter((prize) => prize.year.includes(searchValue));
   };
 
   const handleInputChange = async (value: string) => {
