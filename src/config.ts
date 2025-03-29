@@ -13,6 +13,12 @@ const config = {
     url: "https://nobelprize.org",
   },
 
+  navigation: [
+    { label: "Home", path: "/" },
+    { label: "Laureates", path: "/laureates" },
+    { label: "Prizes", path: "/prizes" },
+  ],
+
   api: "https://api.nobelprize.org/v1",
 };
 

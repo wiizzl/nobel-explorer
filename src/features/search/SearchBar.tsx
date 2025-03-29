@@ -5,11 +5,15 @@ import { toast } from "sonner";
 
 import { Input } from "@/components/ui/input";
 
-import { fetchData } from "@/features/data/data.action";
 import { Laureates, LaureatesSchema } from "@/features/data/schemas/laureate.schema";
 import { Prizes, PrizesSchema } from "@/features/data/schemas/prize.schema";
 
-const SearchBar = () => {
+type SearchBarProps = {
+  laureatesData: Laureates;
+  prizesData: Prizes;
+};
+
+const SearchBar = (props: SearchBarProps) => {
   const [, startTransition] = useTransition();
   const [inputValue, setInputValue] = useState("");
 
@@ -39,10 +43,8 @@ const SearchBar = () => {
 
     startTransition(async () => {
       try {
-        const [laureatesData, prizesData] = await Promise.all([fetchData("laureate"), fetchData("prize")]);
-
-        const filteredLaureates = filterLaureates(laureatesData, trimmedValue);
-        const filteredPrizes = filterPrizes(prizesData, trimmedValue);
+        const filteredLaureates = filterLaureates(props.laureatesData, trimmedValue);
+        const filteredPrizes = filterPrizes(props.prizesData, trimmedValue);
 
         if (filteredLaureates.length === 0 && filteredPrizes.length === 0) {
           toast.info("No results found.");

@@ -14,9 +14,11 @@ const Header = () => {
           <h1 className="font-nobel text-2xl">{config.title}</h1>
         </Link>
         <nav className="flex items-center space-x-5 font-medium lg:space-x-7">
-          <Link href="/" className="hover:underline">
-            Home
-          </Link>
+          {config.navigation.map((item, index) => (
+            <Link href={item.path} className="hover:underline" key={index}>
+              {item.label}
+            </Link>
+          ))}
         </nav>
       </MaxWidthWrapper>
     </header>
