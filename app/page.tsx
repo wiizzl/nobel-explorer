@@ -6,7 +6,7 @@ import { type Prizes } from "@/features/data/schemas/prize.schema";
 import { SearchBar } from "@/features/search/SearchBar";
 
 export default async function HomePage() {
-  const [laureatesData, prizesData]: [Laureates, Prizes] = await Promise.all([
+  const [laureatesData, prizesData] = await Promise.all([
     fetchData("laureate") as Promise<Laureates>,
     fetchData("prize") as Promise<Prizes>,
   ]);
