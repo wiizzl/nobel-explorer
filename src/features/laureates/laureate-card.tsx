@@ -10,16 +10,13 @@ type LaureateCardProps = {
 };
 
 const LaureateCard = (props: LaureateCardProps) => {
-  const latestPrize = props.laureate.nobelPrizes[0];
-
   /**
    * @see https://dev.to/jorik/country-code-to-flag-emoji-a21
+   * @see https://gist.github.com/incredimike/1469814
    */
   const getCountryFlag = (countryName?: string) => {
     const regionNamesInEnglish = new Intl.DisplayNames(["en"], { type: "region" });
 
-    // https://gist.github.com/incredimike/1469814
-    // https://dev.to/jorik/country-code-to-flag-emoji-a21
     // prettier-ignore
     const countryCodes = [
       "AF", "AX", "AL", "DZ", "AS", "AD", "AO", "AI", "AQ", "AG",
@@ -61,8 +58,9 @@ const LaureateCard = (props: LaureateCardProps) => {
     }
   };
 
-  const laureateName = props.laureate.fullName?.en || props.laureate.knownName?.en || props.laureate.orgName?.en;
   const flag = getCountryFlag(props.laureate.birth?.place?.country?.en);
+  const laureateName = props.laureate.fullName?.en || props.laureate.orgName?.en;
+  const latestPrize = props.laureate.nobelPrizes[0];
 
   return (
     <Card className="h-full transition-transform hover:scale-[1.01]">
