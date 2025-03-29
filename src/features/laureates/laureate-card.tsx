@@ -61,18 +61,18 @@ const LaureateCard = (props: LaureateCardProps) => {
     }
   };
 
-  const fullName = props.laureate.fullName?.en || props.laureate.knownName?.en;
+  const laureateName = props.laureate.fullName?.en || props.laureate.knownName?.en || props.laureate.orgName?.en;
   const flag = getCountryFlag(props.laureate.birth?.place?.country?.en);
 
   return (
     <Card className="h-full transition-transform hover:scale-[1.01]">
       <CardHeader>
         <div className="flex justify-between items-center">
-          <CardTitle title={fullName} className="text-xl line-clamp-1">
-            {fullName}
+          <CardTitle title={laureateName} className="text-xl line-clamp-1">
+            {laureateName}
           </CardTitle>
           {flag && (
-            <span title={props.laureate.birth?.place?.city?.en} className="ml-2">
+            <span title={props.laureate.birth?.place?.country?.en} className="ml-2">
               {flag}
             </span>
           )}
