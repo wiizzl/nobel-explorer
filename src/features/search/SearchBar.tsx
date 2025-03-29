@@ -5,8 +5,8 @@ import { toast } from "sonner";
 
 import { Input } from "@/components/ui/input";
 
-import { Laureates } from "@/features/data/schemas/laureate.schema";
-import { Prizes } from "@/features/data/schemas/prize.schema";
+import { type Laureates } from "@/features/data/schemas/laureate.schema";
+import { type Prizes } from "@/features/data/schemas/prize.schema";
 
 type SearchBarProps = {
   laureatesData: Laureates;

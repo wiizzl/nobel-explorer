@@ -1,5 +1,9 @@
 import Link from "next/link";
 
+/**
+ * This 404 page is inspired by Franky47's one.
+ * @see {@link https://github.com/franky47/francoisbest.com/blob/next/packages/francoisbest.com/src/app/not-found.tsx}
+ */
 export default function NotFoundPage() {
   return (
     <main className="min-h-screen">

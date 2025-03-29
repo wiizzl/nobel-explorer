@@ -1,8 +1,9 @@
 "use server";
 
+import { LaureatesSchema } from "@/features/data/schemas/laureate.schema";
+import { PrizesSchema } from "@/features/data/schemas/prize.schema";
+
 import { config } from "@/config";
-import { LaureatesSchema } from "./schemas/laureate.schema";
-import { PrizesSchema } from "./schemas/prize.schema";
 
 const fetchData = async (endpoint: "laureate" | "prize", parameters?: string[]) => {
   const response = await fetch(`${config.api}/${endpoint}.json${parameters ? `?${parameters?.join("&")}` : ""}`);
