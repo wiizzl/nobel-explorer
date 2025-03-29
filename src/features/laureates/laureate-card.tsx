@@ -28,7 +28,7 @@ const LaureateCard = (props: LaureateCardProps) => {
   const flag = getCountryFlag(props.laureateData.bornCountryCode);
 
   return (
-    <Card className="h-full transition-transform group hover:scale-[1.01]">
+    <Card className="h-full transition-transform hover:scale-[1.01]">
       <CardHeader>
         <div className="flex justify-between items-center">
           <CardTitle
@@ -41,14 +41,10 @@ const LaureateCard = (props: LaureateCardProps) => {
         </div>
       </CardHeader>
       <CardContent className="flex flex-grow justify-between items-end">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           <Award className="size-4 text-muted-foreground" />
-          <span className="text-sm text-muted-foreground line-clamp-1">
-            Nobel Prize in{" "}
-            <Badge variant="outline" className="capitalize">
-              {latestPrize.category}
-            </Badge>{" "}
-            {latestPrize.year}
+          <span className="text-sm text-muted-foreground line-clamp-1 capitalize">
+            {latestPrize.category} - {latestPrize.year}
           </span>
           {props.laureateData.prizes.length > 1 && (
             <Badge variant="outline" className="ml-0.5 text-xs">
