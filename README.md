@@ -14,6 +14,11 @@
 - [Zod](https://zod.dev/) : TS-first schema validation with static type inference
 - TODO
 
+## 🔨 Tools used
+
+- [TS to Zod converter](https://quicktype.io/typescript-zod) : to generate types and schemas from API content
+- TODO
+
 ## ✨ Features
 
 - TODO
