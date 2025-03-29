@@ -1,8 +1,15 @@
+import { Metadata } from "next";
+
 import { MaxWidthWrapper } from "@/components/layout/max-width-wrapper";
 import { PaginationWithLinks } from "@/components/ui/pagination-with-links";
 
-import { fetchPrizes } from "@/api/prizes";
 import { PrizeGrid } from "@/features/prizes/prize-grid";
+
+import { fetchPrizes } from "@/api/prizes";
+
+export const metadata: Metadata = {
+  title: "Prizes",
+};
 
 type PrizesPageProps = {
   searchParams: Promise<{ [key: string]: string | undefined }>;

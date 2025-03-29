@@ -1,9 +1,15 @@
+import { Metadata } from "next";
+
 import { MaxWidthWrapper } from "@/components/layout/max-width-wrapper";
 import { PaginationWithLinks } from "@/components/ui/pagination-with-links";
 
 import { LaureateGrid } from "@/features/laureates/laureate-grid";
 
 import { fetchLaureates } from "@/api/laureates";
+
+export const metadata: Metadata = {
+  title: "Laureates",
+};
 
 type LaureatesPageProps = {
   searchParams: Promise<{ [key: string]: string | undefined }>;
