@@ -19,6 +19,7 @@ const LaureateCard = (props: LaureateCardProps) => {
     const regionNamesInEnglish = new Intl.DisplayNames(["en"], { type: "region" });
 
     // https://gist.github.com/incredimike/1469814
+    // https://dev.to/jorik/country-code-to-flag-emoji-a21
     // prettier-ignore
     const countryCodes = [
       "AF", "AX", "AL", "DZ", "AS", "AD", "AO", "AI", "AQ", "AG",
