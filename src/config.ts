@@ -16,6 +16,7 @@ const config = {
   navigation: [
     { label: "Home", path: "/" },
     { label: "Laureates", path: "/laureates" },
+    { label: "Prizes", path: "/prizes" },
   ],
 
   api: "https://api.nobelprize.org/2.1",

@@ -1,32 +1,32 @@
 import { z } from "zod";
 
-export const GenderSchema = z.enum(["female", "male"]);
-export type Gender = z.infer<typeof GenderSchema>;
+const GenderSchema = z.enum(["female", "male"]);
+type Gender = z.infer<typeof GenderSchema>;
 
-export const ActionSchema = z.enum(["GET"]);
-export type Action = z.infer<typeof ActionSchema>;
+const ActionSchema = z.enum(["GET"]);
+type Action = z.infer<typeof ActionSchema>;
 
-export const ClassElementSchema = z.enum(["laureate facts", "prize summary"]);
-export type ClassElement = z.infer<typeof ClassElementSchema>;
+const ClassElementSchema = z.enum(["laureate facts", "prize summary"]);
+type ClassElement = z.infer<typeof ClassElementSchema>;
 
-export const RelSchema = z.enum(["external", "laureate", "nobelPrize"]);
-export type Rel = z.infer<typeof RelSchema>;
+const RelSchema = z.enum(["external", "laureate", "nobelPrize"]);
+type Rel = z.infer<typeof RelSchema>;
 
-export const TypesSchema = z.enum(["application/json", "text/html"]);
-export type Types = z.infer<typeof TypesSchema>;
+const TypesSchema = z.enum(["application/json", "text/html"]);
+type Types = z.infer<typeof TypesSchema>;
 
-export const PrizeStatusSchema = z.enum(["declined", "received", "restricted"]);
-export type PrizeStatus = z.infer<typeof PrizeStatusSchema>;
+const PrizeStatusSchema = z.enum(["declined", "received", "restricted"]);
+type PrizeStatus = z.infer<typeof PrizeStatusSchema>;
 
-export const FamilyNameSchema = z.object({
+const FamilyNameSchema = z.object({
   en: z.string(),
   no: z.string().optional(),
   se: z.string().optional(),
   sameAs: z.union([z.array(z.string()), z.string()]).optional(),
 });
-export type FamilyName = z.infer<typeof FamilyNameSchema>;
+type FamilyName = z.infer<typeof FamilyNameSchema>;
 
-export const YNowSchema = z.object({
+const YNowSchema = z.object({
   en: z.string(),
   no: z.string().optional(),
   se: z.string().optional(),
@@ -34,9 +34,9 @@ export const YNowSchema = z.object({
   latitude: z.string().optional(),
   longitude: z.string().optional(),
 });
-export type YNow = z.infer<typeof YNowSchema>;
+type YNow = z.infer<typeof YNowSchema>;
 
-export const FoundedPlaceSchema = z.object({
+const FoundedPlaceSchema = z.object({
   city: FamilyNameSchema.optional(),
   country: FamilyNameSchema.optional(),
   cityNow: FamilyNameSchema.optional(),
@@ -44,14 +44,14 @@ export const FoundedPlaceSchema = z.object({
   continent: FamilyNameSchema.optional(),
   locationString: FamilyNameSchema,
 });
-export type FoundedPlace = z.infer<typeof FoundedPlaceSchema>;
+type FoundedPlace = z.infer<typeof FoundedPlaceSchema>;
 
-export const FoundedContinentSchema = z.object({
+const FoundedContinentSchema = z.object({
   en: z.string(),
 });
-export type FoundedContinent = z.infer<typeof FoundedContinentSchema>;
+type FoundedContinent = z.infer<typeof FoundedContinentSchema>;
 
-export const LinkSchema = z.object({
+const LinkSchema = z.object({
   rel: RelSchema,
   href: z.string(),
   action: ActionSchema,
@@ -59,9 +59,9 @@ export const LinkSchema = z.object({
   title: z.string().optional(),
   class: z.array(ClassElementSchema).optional(),
 });
-export type Link = z.infer<typeof LinkSchema>;
+type Link = z.infer<typeof LinkSchema>;
 
-export const AffiliationSchema = z.object({
+const AffiliationSchema = z.object({
   name: FamilyNameSchema,
   nameNow: FoundedContinentSchema,
   city: FamilyNameSchema.optional(),
@@ -72,9 +72,9 @@ export const AffiliationSchema = z.object({
   locationString: FamilyNameSchema,
   nativeName: z.string().optional(),
 });
-export type Affiliation = z.infer<typeof AffiliationSchema>;
+type Affiliation = z.infer<typeof AffiliationSchema>;
 
-export const ResidenceSchema = z.object({
+const ResidenceSchema = z.object({
   country: FamilyNameSchema,
   countryNow: FamilyNameSchema.optional(),
   continent: FoundedContinentSchema.optional(),
@@ -82,40 +82,40 @@ export const ResidenceSchema = z.object({
   city: FamilyNameSchema.optional(),
   cityNow: FamilyNameSchema.optional(),
 });
-export type Residence = z.infer<typeof ResidenceSchema>;
+type Residence = z.infer<typeof ResidenceSchema>;
 
-export const TopMotivationSchema = z.object({
+const TopMotivationSchema = z.object({
   en: z.string(),
   se: z.string().optional(),
 });
-export type TopMotivation = z.infer<typeof TopMotivationSchema>;
+type TopMotivation = z.infer<typeof TopMotivationSchema>;
 
-export const PenNameOfSchema = z.object({
+const PenNameOfSchema = z.object({
   fullName: z.string(),
 });
-export type PenNameOf = z.infer<typeof PenNameOfSchema>;
+type PenNameOf = z.infer<typeof PenNameOfSchema>;
 
-export const WikidataSchema = z.object({
+const WikidataSchema = z.object({
   id: z.string(),
   url: z.string(),
 });
-export type Wikidata = z.infer<typeof WikidataSchema>;
+type Wikidata = z.infer<typeof WikidataSchema>;
 
-export const WikipediaSchema = z.object({
+const WikipediaSchema = z.object({
   slug: z.string(),
   english: z.string(),
 });
-export type Wikipedia = z.infer<typeof WikipediaSchema>;
+type Wikipedia = z.infer<typeof WikipediaSchema>;
 
-export const LinksSchema = z.object({
+const LinksSchema = z.object({
   first: z.string(),
   self: z.string(),
   next: z.string(),
   last: z.string(),
 });
-export type Links = z.infer<typeof LinksSchema>;
+type Links = z.infer<typeof LinksSchema>;
 
-export const MetaSchema = z.object({
+const MetaSchema = z.object({
   offset: z.number(),
   limit: z.number(),
   count: z.number(),
@@ -123,9 +123,9 @@ export const MetaSchema = z.object({
   license: z.string(),
   disclaimer: z.string(),
 });
-export type Meta = z.infer<typeof MetaSchema>;
+type Meta = z.infer<typeof MetaSchema>;
 
-export const BirthPlaceSchema = z.object({
+const BirthPlaceSchema = z.object({
   city: FamilyNameSchema.optional(),
   country: FamilyNameSchema.optional(),
   cityNow: YNowSchema.optional(),
@@ -133,21 +133,21 @@ export const BirthPlaceSchema = z.object({
   continent: FamilyNameSchema.optional(),
   locationString: FamilyNameSchema,
 });
-export type BirthPlace = z.infer<typeof BirthPlaceSchema>;
+type BirthPlace = z.infer<typeof BirthPlaceSchema>;
 
-export const DeathSchema = z.object({
+const DeathSchema = z.object({
   date: z.string(),
   place: BirthPlaceSchema,
 });
-export type Death = z.infer<typeof DeathSchema>;
+type Death = z.infer<typeof DeathSchema>;
 
-export const FoundedSchema = z.object({
+const FoundedSchema = z.object({
   date: z.string(),
   place: FoundedPlaceSchema,
 });
-export type Founded = z.infer<typeof FoundedSchema>;
+type Founded = z.infer<typeof FoundedSchema>;
 
-export const NobelPrizeSchema = z.object({
+const NobelPrizeSchema = z.object({
   awardYear: z.string(),
   category: FamilyNameSchema,
   categoryFullName: FamilyNameSchema,
@@ -163,15 +163,15 @@ export const NobelPrizeSchema = z.object({
   residences: z.array(ResidenceSchema).optional(),
   topMotivation: TopMotivationSchema.optional(),
 });
-export type NobelPrize = z.infer<typeof NobelPrizeSchema>;
+type NobelPrize = z.infer<typeof NobelPrizeSchema>;
 
-export const BirthSchema = z.object({
+const BirthSchema = z.object({
   date: z.string(),
   place: BirthPlaceSchema.optional(),
 });
-export type Birth = z.infer<typeof BirthSchema>;
+type Birth = z.infer<typeof BirthSchema>;
 
-export const LaureateSchema = z.object({
+const LaureateSchema = z.object({
   id: z.string(),
   knownName: FamilyNameSchema.optional(),
   givenName: FamilyNameSchema.optional(),
@@ -196,11 +196,69 @@ export const LaureateSchema = z.object({
   foundedCountryNow: FamilyNameSchema.optional(),
   foundedContinent: FoundedContinentSchema.optional(),
 });
-export type Laureate = z.infer<typeof LaureateSchema>;
+type Laureate = z.infer<typeof LaureateSchema>;
 
-export const LaureatesSchema = z.object({
+const LaureatesSchema = z.object({
   laureates: z.array(LaureateSchema),
   meta: MetaSchema,
   links: LinksSchema,
 });
-export type Laureates = z.infer<typeof LaureatesSchema>;
+type Laureates = z.infer<typeof LaureatesSchema>;
+
+export type {
+  Action,
+  Affiliation,
+  Birth,
+  BirthPlace,
+  ClassElement,
+  Death,
+  FamilyName,
+  Founded,
+  FoundedContinent,
+  FoundedPlace,
+  Gender,
+  Laureate,
+  Laureates,
+  Link,
+  Links,
+  Meta,
+  NobelPrize,
+  PenNameOf,
+  PrizeStatus,
+  Rel,
+  Residence,
+  TopMotivation,
+  Types,
+  Wikidata,
+  Wikipedia,
+  YNow,
+};
+
+export {
+  ActionSchema,
+  AffiliationSchema,
+  BirthPlaceSchema,
+  BirthSchema,
+  ClassElementSchema,
+  DeathSchema,
+  FamilyNameSchema,
+  FoundedContinentSchema,
+  FoundedPlaceSchema,
+  FoundedSchema,
+  GenderSchema,
+  LaureateSchema,
+  LaureatesSchema,
+  LinkSchema,
+  LinksSchema,
+  MetaSchema,
+  NobelPrizeSchema,
+  PenNameOfSchema,
+  PrizeStatusSchema,
+  RelSchema,
+  ResidenceSchema,
+  TopMotivationSchema,
+  TypesSchema,
+  WikidataSchema,
+  WikipediaSchema,
+  YNowSchema,
+};
