@@ -18,7 +18,7 @@ const config = {
     { label: "Laureates", path: "/laureates" },
   ],
 
-  api: "https://api.nobelprize.org/v1",
+  api: "https://api.nobelprize.org/2.1",
 };
 
 export { config };

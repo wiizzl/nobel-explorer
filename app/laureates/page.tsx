@@ -1,17 +1,34 @@
+import { fetchLaureates } from "@/api/laureates";
 import { MaxWidthWrapper } from "@/components/layout/max-width-wrapper";
+import { PaginationWithLinks } from "@/components/ui/pagination-with-links";
 
-import { fetchData } from "@/features/data/data.action";
-import { type Laureates } from "@/features/data/schemas/laureate.schema";
 import { LaureateGrid } from "@/features/laureates/laureate-grid";
 
-export default async function LaureatesPage() {
-  const laureatesData = (await fetchData("laureate")) as Laureates;
+type LaureatesPageProps = {
+  searchParams: { [key: string]: string | undefined };
+};
+
+export default async function LaureatesPage(props: LaureatesPageProps) {
+  const searchParams = await props.searchParams;
+
+  const page = parseInt(searchParams["page"] || "1");
+  const pageSize = parseInt(searchParams["pageSize"] || "25");
+
+  const laureates = await fetchLaureates(page, pageSize);
 
   return (
     <main className="min-h-screen">
       <section>
         <MaxWidthWrapper>
-          <LaureateGrid laureatesData={laureatesData} />
+          <LaureateGrid laureates={laureates} />
+          <div className="mt-5">
+            <PaginationWithLinks
+              page={page}
+              pageSize={pageSize}
+              totalCount={laureates.meta.count}
+              pageSizeSelectOptions={{ pageSizeOptions: [25, 50, 100] }}
+            />
+          </div>
         </MaxWidthWrapper>
       </section>
     </main>
