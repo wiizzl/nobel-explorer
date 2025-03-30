@@ -16,7 +16,7 @@ const PrizeGrid = (props: PrizeGridProps) => {
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {props.prizes.nobelPrizes.map((item, index) => (
-          <Link href={`/prizes/${item.awardYear}?category=${item.category}`} key={index}>
+          <Link href={`/prizes/${item.awardYear}?category=${item.category.en}`} key={index}>
             <PrizeCard prize={item} />
           </Link>
         ))}
