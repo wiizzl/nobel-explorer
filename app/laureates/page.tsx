@@ -33,7 +33,7 @@ export default async function LaureatesPage(props: LaureatesPageProps) {
               page={page}
               pageSize={pageSize}
               totalCount={laureates.meta.count}
-              pageSizeSelectOptions={{ pageSizeOptions: [25, 50, 100] }}
+              pageSizeSelectOptions={{ pageSizeOptions: [10, 25, 50, 100] }}
             />
           </div>
         </MaxWidthWrapper>
