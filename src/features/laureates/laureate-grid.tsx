@@ -57,38 +57,38 @@ const LaureateGrid = () => {
   }
 
   return (
-    <div className="space-y-6">
-      <LaureateFilter
-        filters={{ name, gender }}
-        setFilters={{ setName, setGender }}
-        clearFilters={clearFilters}
-        applySearch={() => setAppliedName(name)}
-        isPending={isPending}
-      />
+    <Suspense>
+      <div className="space-y-6">
+        <LaureateFilter
+          filters={{ name, gender }}
+          setFilters={{ setName, setGender }}
+          clearFilters={clearFilters}
+          applySearch={() => setAppliedName(name)}
+          isPending={isPending}
+        />
 
-      {laureates.laureates?.length === 0 ? (
-        <div className="text-center py-12 border rounded-lg bg-muted/20">
-          <h3 className="text-xl font-medium mb-2">No laureates found</h3>
-          <p className="text-muted-foreground">Try adjusting your filters or search criteria</p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {laureates.laureates?.map((item, index) => (
-            <Link href={`/laureates/${item.id}`} key={index}>
-              <LaureateCard laureate={item} />
-            </Link>
-          ))}
-        </div>
-      )}
-      <Suspense>
+        {laureates.laureates?.length === 0 ? (
+          <div className="text-center py-12 border rounded-lg bg-muted/20">
+            <h3 className="text-xl font-medium mb-2">No laureates found</h3>
+            <p className="text-muted-foreground">Try adjusting your filters or search criteria</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {laureates.laureates?.map((item, index) => (
+              <Link href={`/laureates/${item.id}`} key={index}>
+                <LaureateCard laureate={item} />
+              </Link>
+            ))}
+          </div>
+        )}
         <PaginationWithLinks
           page={page}
           pageSize={pageSize}
           totalCount={laureates.meta?.count || 1000}
           pageSizeSelectOptions={{ pageSizeOptions: [10, 25, 50, 100] }}
         />
-      </Suspense>
-    </div>
+      </div>
+    </Suspense>
   );
 };
 
