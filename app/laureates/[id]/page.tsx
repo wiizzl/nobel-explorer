@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 import { MaxWidthWrapper } from "@/components/layout/max-width-wrapper";
 
@@ -15,10 +15,11 @@ type LaureatePageProps = {
 
 export default async function LaureatePage(props: LaureatePageProps) {
   const { id } = await props.params;
-  if (!id) redirect("/laureates");
+  const laureateId = parseInt(id);
 
-  const laureate = await fetchLaureate(parseInt(id));
-  if (!laureate) notFound();
+  if (!laureateId) notFound();
+
+  const laureate = await fetchLaureate(laureateId);
 
   return (
     <main className="min-h-screen">
