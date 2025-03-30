@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { parseAsInteger, useQueryState } from "nuqs";
-import { useEffect, useState, useTransition } from "react";
+import { Suspense, useEffect, useState, useTransition } from "react";
 
 import { PaginationWithLinks } from "@/components/ui/pagination-with-links";
 
@@ -80,12 +80,14 @@ const LaureateGrid = () => {
           ))}
         </div>
       )}
-      <PaginationWithLinks
-        page={page}
-        pageSize={pageSize}
-        totalCount={laureates.meta?.count || 1000}
-        pageSizeSelectOptions={{ pageSizeOptions: [10, 25, 50, 100] }}
-      />
+      <Suspense fallback={<div>Loading pagination...</div>}>
+        <PaginationWithLinks
+          page={page}
+          pageSize={pageSize}
+          totalCount={laureates.meta?.count || 1000}
+          pageSizeSelectOptions={{ pageSizeOptions: [10, 25, 50, 100] }}
+        />
+      </Suspense>
     </div>
   );
 };
