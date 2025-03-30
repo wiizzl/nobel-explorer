@@ -2,6 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import LocalFont from "next/font/local";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -37,7 +38,7 @@ export default function RootLayout(props: RootLayoutProps) {
     <html lang="en">
       <body className={`${Nobel.variable} antialiased selection:bg-accent-foreground/20`}>
         <Header />
-        {props.children}
+        <NuqsAdapter>{props.children}</NuqsAdapter>
         <Footer />
       </body>
     </html>
