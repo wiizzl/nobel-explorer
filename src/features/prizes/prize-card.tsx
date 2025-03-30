@@ -25,7 +25,7 @@ const PrizeCard = (props: PrizeCardProps) => {
   const laureateCount = props.prize.laureates?.length || 0;
 
   return (
-    <Card className="h-full hover:scale-[1.01]">
+    <Card className="h-full transition-transform hover:scale-[1.01]">
       <CardHeader>
         <CardTitle className="text-xl">
           {props.prize.category.en} - {props.prize.awardYear}
