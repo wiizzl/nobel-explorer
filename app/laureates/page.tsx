@@ -14,7 +14,7 @@ export default function LaureatesPage() {
     <main className="min-h-screen">
       <section>
         <MaxWidthWrapper>
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense>
             <LaureateGrid />
           </Suspense>
         </MaxWidthWrapper>
