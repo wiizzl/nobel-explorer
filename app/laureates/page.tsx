@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { MaxWidthWrapper } from "@/components/layout/max-width-wrapper";
 
 import { LaureateGrid } from "@/features/laureates/laureate-grid";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Laureates",
@@ -13,7 +14,9 @@ export default function LaureatesPage() {
     <main className="min-h-screen">
       <section>
         <MaxWidthWrapper>
-          <LaureateGrid />
+          <Suspense fallback={<p>Loading...</p>}>
+            <LaureateGrid />
+          </Suspense>
         </MaxWidthWrapper>
       </section>
     </main>
