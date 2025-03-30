@@ -11,7 +11,6 @@
 - [bun](https://bun.sh/) : a fast all-in-one JS runtime
 - [Next.js](https://nextjs.org/) : the React framework
 - [TailwindCSS](https://tailwindcss.com/) : the CSS framework
-- [Zod](https://zod.dev/) : TS-first schema validation with static type inference
 - TODO
 
 ## 🔨 Tools used
