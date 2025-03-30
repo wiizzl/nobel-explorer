@@ -17,7 +17,8 @@ export default async function LaureatePage(props: LaureatePageProps) {
   const { id } = await props.params;
   if (!id) redirect("/laureates");
 
-  const laureate = await fetchLaureate(id);
+  const laureate = await fetchLaureate(parseInt(id));
+  if (!laureate) redirect("/laureates");
 
   return (
     <main className="min-h-screen">

@@ -1,8 +1,8 @@
 "use server";
 
-import { NobelPrizesSchema } from "@/features/prizes/schema/prizes.schema";
-
 import { config } from "@/config";
+
+import { NobelPrizesResult } from "@/types/api";
 
 const fetchPrizes = async (page: number, perPage: number) => {
   const response = await fetch(`${config.api}/nobelPrizes?offset=${page}&limit=${perPage}`);
@@ -13,9 +13,7 @@ const fetchPrizes = async (page: number, perPage: number) => {
     throw new Error(`Error while fetching data: ${response.statusText}`);
   }
 
-  const parsedData = NobelPrizesSchema.parse(data);
-
-  return parsedData;
+  return data as NobelPrizesResult;
 };
 
 export { fetchPrizes };

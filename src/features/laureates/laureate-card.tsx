@@ -3,7 +3,7 @@ import { Award, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { type Laureate } from "@/features/laureates/schemas/laureates.schema";
+import { Laureate } from "@/types/api";
 
 type LaureateCardProps = {
   laureate: Laureate;
@@ -60,7 +60,7 @@ const LaureateCard = (props: LaureateCardProps) => {
 
   const flag = getCountryFlag(props.laureate.birth?.place?.country?.en);
   const laureateName = props.laureate.fullName?.en || props.laureate.orgName?.en;
-  const latestPrize = props.laureate.nobelPrizes[0];
+  const latestPrize = props.laureate.nobelPrizes?.[0];
 
   return (
     <Card className="h-full transition-transform hover:scale-[1.01]">
@@ -80,11 +80,11 @@ const LaureateCard = (props: LaureateCardProps) => {
         <div className="flex items-center gap-1.5">
           <Award className="size-4 text-muted-foreground" />
           <span className="text-sm text-muted-foreground line-clamp-1 capitalize">
-            {latestPrize.category.en} - {latestPrize.awardYear}
+            {latestPrize?.category?.en} - {latestPrize?.awardYear}
           </span>
-          {props.laureate.nobelPrizes.length > 1 && (
+          {(props.laureate.nobelPrizes?.length ?? 0) > 1 && (
             <Badge variant="outline" className="ml-0.5 text-xs">
-              +{props.laureate.nobelPrizes.length - 1}
+              +{(props.laureate.nobelPrizes?.length ?? 0) - 1}
             </Badge>
           )}
         </div>

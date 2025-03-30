@@ -16,7 +16,7 @@
 
 ## 🔨 Tools used
 
-- [TS to Zod converter](https://quicktype.io/typescript-zod) : to generate types and schemas from API content
+- [Swagger TS API](https://github.com/acacode/swagger-typescript-api/) : to generate types from API Swagger JSON
 - TODO
 
 ## ✨ Features

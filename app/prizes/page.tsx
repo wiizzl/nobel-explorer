@@ -32,7 +32,7 @@ export default async function PrizesPage(props: PrizesPageProps) {
             <PaginationWithLinks
               page={page}
               pageSize={pageSize}
-              totalCount={prizes.meta.count}
+              totalCount={prizes.meta?.count || 1000}
               pageSizeSelectOptions={{ pageSizeOptions: [10, 25, 50, 100] }}
             />
           </div>

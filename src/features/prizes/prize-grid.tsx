@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 
-import { type NobelPrizes } from "@/features/prizes/schema/prizes.schema";
-import { PrizeCard } from "./prize-card";
+import { PrizeCard } from "@/features/prizes/prize-card";
+
+import { NobelPrizesResult } from "@/types/api";
 
 type PrizeGridProps = {
-  prizes: NobelPrizes;
+  prizes: NobelPrizesResult;
 };
 
 const PrizeGrid = (props: PrizeGridProps) => {
@@ -15,8 +16,8 @@ const PrizeGrid = (props: PrizeGridProps) => {
       {/* TODO: aside filters */}
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {props.prizes.nobelPrizes.map((item, index) => (
-          <Link href={`/prizes/${item.awardYear}?category=${item.category.en}`} key={index}>
+        {props.prizes.nobelPrizes?.map((item, index) => (
+          <Link href={`/prizes/${item.awardYear}?category=${item.category?.en}`} key={index}>
             <PrizeCard prize={item} />
           </Link>
         ))}

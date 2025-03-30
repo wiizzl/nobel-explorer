@@ -4,7 +4,7 @@ import { Calendar, ChevronRight, Users } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { type NobelPrize } from "@/features/prizes/schema/prizes.schema";
+import { NobelPrize } from "@/types/api";
 
 type PrizeCardProps = {
   prize: NobelPrize;
@@ -28,7 +28,7 @@ const PrizeCard = (props: PrizeCardProps) => {
     <Card className="h-full transition-transform hover:scale-[1.01]">
       <CardHeader>
         <CardTitle className="text-xl">
-          {props.prize.category.en} - {props.prize.awardYear}
+          {props.prize.category?.en} - {props.prize.awardYear}
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-grow justify-between items-end">
