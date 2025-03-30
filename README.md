@@ -11,7 +11,7 @@
 - [bun](https://bun.sh/) : a fast all-in-one JS runtime
 - [Next.js](https://nextjs.org/) : the React framework
 - [TailwindCSS](https://tailwindcss.com/) : the CSS framework
-- TODO
+- [TanStack Query](https://tanstack.com/query/latest) : an asynchronous state management
 
 ## 🔨 Tools used
 

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Laureates",
 };
 
-export default async function LaureatesPage() {
+export default function LaureatesPage() {
   return (
     <main className="min-h-screen">
       <section>

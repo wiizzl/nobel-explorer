@@ -2,6 +2,7 @@ import { Award, ChevronRight } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import { Laureate } from "@/types/api";
 
@@ -11,6 +12,7 @@ type LaureateCardProps = {
 
 const LaureateCard = (props: LaureateCardProps) => {
   /**
+   * @todo Refactor this function because it does not work everytime (Poland, ...)
    * @see https://dev.to/jorik/country-code-to-flag-emoji-a21
    * @see https://gist.github.com/incredimike/1469814
    */
@@ -59,7 +61,7 @@ const LaureateCard = (props: LaureateCardProps) => {
   };
 
   const flag = getCountryFlag(props.laureate.birth?.place?.country?.en);
-  const laureateName = props.laureate.fullName?.en || props.laureate.orgName?.en;
+  const laureateName = props.laureate.knownName?.en || props.laureate.orgName?.en;
   const latestPrize = props.laureate.nobelPrizes?.[0];
 
   return (
@@ -94,4 +96,16 @@ const LaureateCard = (props: LaureateCardProps) => {
   );
 };
 
-export { LaureateCard };
+const LaureateCardSkeleton = () => {
+  return (
+    <div>
+      <Skeleton className="h-[88px] w-full rounded-xl" />
+      <div className="flex items-center justify-between mt-2">
+        <Skeleton className="h-4 w-[70%]" />
+        <Skeleton className="h-4 w-6" />
+      </div>
+    </div>
+  );
+};
+
+export { LaureateCard, LaureateCardSkeleton };
