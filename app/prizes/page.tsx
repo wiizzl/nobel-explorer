@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 
 import { MaxWidthWrapper } from "@/components/layout/max-width-wrapper";
-import { PaginationWithLinks } from "@/components/ui/pagination-with-links";
 
 import { PrizeGrid } from "@/features/prizes/prize-grid";
 
@@ -28,14 +27,6 @@ export default async function PrizesPage(props: PrizesPageProps) {
       <section>
         <MaxWidthWrapper>
           <PrizeGrid prizes={prizes} />
-          <div className="mt-5">
-            <PaginationWithLinks
-              page={page}
-              pageSize={pageSize}
-              totalCount={676}
-              pageSizeSelectOptions={{ pageSizeOptions: [10, 25, 50, 100] }}
-            />
-          </div>
         </MaxWidthWrapper>
       </section>
     </main>
