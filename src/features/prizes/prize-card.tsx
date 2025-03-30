@@ -4,6 +4,7 @@ import { ChevronRight, Users } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+import { Badge } from "@/components/ui/badge";
 import { NobelPrize } from "@/types/api";
 
 type PrizeCardProps = {
@@ -16,9 +17,10 @@ const PrizeCard = (props: PrizeCardProps) => {
   return (
     <Card className="h-full transition-transform hover:scale-[1.01]">
       <CardHeader>
-        <CardTitle className="text-xl">
-          {props.prize.category?.en} - {props.prize.awardYear}
-        </CardTitle>
+        <div className="flex justify-between items-end">
+          <CardTitle className="text-xl line-clamp-1">{props.prize.category?.en}</CardTitle>
+          <Badge variant="outline">{props.prize.awardYear}</Badge>
+        </div>
       </CardHeader>
       <CardContent className="flex flex-grow justify-between items-end">
         <div className="flex items-center gap-1.5">
