@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
-import { parseAsInteger, useQueryState } from "nuqs";
+import { parseAsInteger, useQueryStates } from "nuqs";
 
 import { PaginationWithButtons } from "@/components/ui/pagination-with-buttons";
 
@@ -15,8 +15,10 @@ import { useLaureatesFilters } from "@/hooks/filters";
 import { fetchLaureates } from "@/api/laureates";
 
 const LaureateGrid = () => {
-  const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
-  const [pageSize, setPageSize] = useQueryState("pageSize", parseAsInteger.withDefault(25));
+  const [page, setPage] = useQueryStates({
+    page: parseAsInteger.withDefault(1),
+    pageSize: parseAsInteger.withDefault(25),
+  });
 
   const [filters, setFilters] = useLaureatesFilters();
 
@@ -47,18 +49,17 @@ const LaureateGrid = () => {
   };
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["laureates", { page, pageSize, ...debouncedFilters }],
+    queryKey: ["laureates", { page, ...debouncedFilters }],
     queryFn: () =>
       fetchLaureates(
-        page,
-        pageSize,
+        page.page,
+        page.pageSize,
         Object.entries(debouncedFilters).map(([key, value]) => ({ key, value }))
       ),
   });
 
   const clearFilters = () => {
-    setPage(1);
-    setPageSize(25);
+    setPage({ page: 1, pageSize: 25 });
 
     setFilters({
       sort: "asc",
@@ -92,7 +93,7 @@ const LaureateGrid = () => {
 
       {isLoading && (
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {Array.from({ length: pageSize }).map((_, index) => (
+          {Array.from({ length: page.pageSize }).map((_, index) => (
             <LaureateCardSkeleton key={index} />
           ))}
         </div>
@@ -118,12 +119,11 @@ const LaureateGrid = () => {
       )}
 
       <PaginationWithButtons
-        page={page}
-        pageSize={pageSize}
+        page={page.page}
+        pageSize={page.pageSize}
         totalCount={data?.meta?.count || 0}
         pageSizeSelectOptions={{ pageSizeOptions: [10, 25, 50, 100] }}
         onPageChange={setPage}
-        onPageSizeChange={setPageSize}
       />
     </div>
   );
