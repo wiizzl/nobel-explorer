@@ -12,8 +12,6 @@ interface Parameter {
 const fetchPrizes = async (page: number, perPage: number, parameters?: Parameter[]) => {
   const queryParams = parameters?.map((param) => `${param.key}=${param.value}`).join("&");
 
-  console.log(queryParams);
-
   const response = await fetch(
     `${config.api}/nobelPrizes?offset=${(page - 1) * perPage}&limit=${perPage}${parameters ? `&${queryParams}` : ""}`
   );
