@@ -13,7 +13,7 @@ const fetchPrizes = async (page: number, perPage: number, parameters?: Parameter
   const queryParams = parameters?.map((param) => `${param.key}=${param.value}`).join("&");
 
   const response = await fetch(
-    `${config.api}/nobelPrizes?offset=${(page - 1) * perPage}&limit=${perPage}${parameters ? `&${queryParams}` : ""}`
+    `${config.api}/nobelPrizes?offset=${(page - 1) * perPage}&limit=${perPage}${parameters ? `&${queryParams}` : ""}`,
   );
 
   if (!response.ok) {
