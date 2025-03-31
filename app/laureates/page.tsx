@@ -1,9 +1,9 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 import { MaxWidthWrapper } from "@/components/layout/max-width-wrapper";
 
 import { LaureateGrid } from "@/features/laureates/laureate-grid";
-import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Laureates",

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 import { MaxWidthWrapper } from "@/components/layout/max-width-wrapper";
 
@@ -13,7 +14,9 @@ export default async function PrizesPage() {
     <main className="min-h-screen">
       <section>
         <MaxWidthWrapper>
-          <PrizeGrid />
+          <Suspense>
+            <PrizeGrid />
+          </Suspense>
         </MaxWidthWrapper>
       </section>
     </main>
