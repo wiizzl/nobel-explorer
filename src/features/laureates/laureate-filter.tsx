@@ -108,7 +108,7 @@ const LaureateFilter = (props: LaureateFilterProps) => {
               <SheetDescription>Narrow down the laureates based on different criteria</SheetDescription>
             </SheetHeader>
             <Separator />
-            <div className="space-y-5">
+            <div className="overflow-y-auto space-y-5 no-scrollbar">
               <div className="space-y-2">
                 <Label htmlFor="gender-filter">Gender</Label>
                 <Select value={props.filters.gender} onValueChange={(value) => props.setFilters.setGender(value)}>
