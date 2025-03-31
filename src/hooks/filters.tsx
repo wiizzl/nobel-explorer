@@ -6,7 +6,7 @@ const useLaureatesFilters = () => {
   return useQueryStates({
     name: parseAsString.withDefault(""),
     sort: parseAsString.withDefault("asc"),
-    gender: parseAsString.withDefault("all"),
+    gender: parseAsString.withDefault(""),
     motivation: parseAsString.withDefault(""),
     affiliation: parseAsString.withDefault(""),
     residence: parseAsString.withDefault(""),
@@ -32,7 +32,10 @@ const useLaureatesFilters = () => {
 
 const usePrizesFilters = () => {
   return useQueryStates({
-    // TODO: define filters
+    sort: parseAsString.withDefault("desc"),
+    nobelPrizeYear: parseAsString.withDefault(""),
+    yearTo: parseAsString.withDefault(""),
+    nobelPrizeCategory: parseAsString.withDefault(""),
   });
 };
 

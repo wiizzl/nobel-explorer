@@ -2,9 +2,10 @@
 
 import { ChevronRight, Users } from "lucide-react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+
 import { NobelPrize } from "@/types/api";
 
 type PrizeCardProps = {
@@ -35,4 +36,16 @@ const PrizeCard = (props: PrizeCardProps) => {
   );
 };
 
-export { PrizeCard };
+const PrizeCardSkeleton = () => {
+  return (
+    <div>
+      <Skeleton className="h-[88px] w-full rounded-xl" />
+      <div className="flex items-center justify-between mt-2">
+        <Skeleton className="h-4 w-[50%]" />
+        <Skeleton className="h-4 w-6" />
+      </div>
+    </div>
+  );
+};
+
+export { PrizeCard, PrizeCardSkeleton };

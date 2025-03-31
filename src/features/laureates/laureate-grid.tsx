@@ -63,7 +63,7 @@ const LaureateGrid = () => {
 
     setFilters({
       sort: "asc",
-      gender: "all",
+      gender: "",
       motivation: "",
       affiliation: "",
       residence: "",
