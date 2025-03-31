@@ -5,10 +5,10 @@ import { type ReactNode, useCallback } from "react";
 
 import {
   Pagination,
+  PaginationButton,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
@@ -16,7 +16,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 import { cn } from "@/lib/utils";
 
-interface PaginationWithLinksProps {
+type PaginationWithButtonsProps = {
   pageSizeSelectOptions?: {
     pageSizeSearchParam?: string;
     pageSizeOptions: number[];
@@ -25,25 +25,27 @@ interface PaginationWithLinksProps {
   pageSize: number;
   page: number;
   pageSearchParam?: string;
-}
+  onPageChange: (page: number) => void;
+  onPageSizeChange: (pageSize: number) => void;
+};
 
-function PaginationWithLinks(props: PaginationWithLinksProps) {
+function PaginationWithButtons(props: PaginationWithButtonsProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const totalPageCount = Math.ceil(props.totalCount / props.pageSize);
 
-  const buildLink = useCallback(
-    (newPage: number) => {
-      const key = props.pageSearchParam || "page";
-      if (!searchParams) return `${pathname}?${key}=${newPage}`;
-      const newSearchParams = new URLSearchParams(searchParams);
-      newSearchParams.set(key, String(newPage));
-      return `${pathname}?${newSearchParams.toString()}`;
-    },
-    [searchParams, pathname, props.pageSearchParam]
-  );
+  // const buildLink = useCallback(
+  //   (newPage: number) => {
+  //     const key = props.pageSearchParam || "page";
+  //     if (!searchParams) return `${pathname}?${key}=${newPage}`;
+  //     const newSearchParams = new URLSearchParams(searchParams);
+  //     newSearchParams.set(key, String(newPage));
+  //     return `${pathname}?${newSearchParams.toString()}`;
+  //   },
+  //   [searchParams, pathname, props.pageSearchParam]
+  // );
 
   const navToPageSize = useCallback(
     (newPageSize: number) => {
@@ -64,18 +66,26 @@ function PaginationWithLinks(props: PaginationWithLinksProps) {
       for (let i = 1; i <= totalPageCount; i++) {
         items.push(
           <PaginationItem key={i}>
-            <PaginationLink href={buildLink(i)} isActive={props.page === i}>
+            <PaginationButton
+              // href={buildLink(i)}
+              onClick={() => props.onPageChange(i)}
+              isActive={props.page === i}
+            >
               {i}
-            </PaginationLink>
+            </PaginationButton>
           </PaginationItem>
         );
       }
     } else {
       items.push(
         <PaginationItem key={1}>
-          <PaginationLink href={buildLink(1)} isActive={props.page === 1}>
+          <PaginationButton
+            // href={buildLink(1)}
+            onClick={() => props.onPageChange(1)}
+            isActive={props.page === 1}
+          >
             1
-          </PaginationLink>
+          </PaginationButton>
         </PaginationItem>
       );
 
@@ -93,9 +103,13 @@ function PaginationWithLinks(props: PaginationWithLinksProps) {
       for (let i = start; i <= end; i++) {
         items.push(
           <PaginationItem key={i}>
-            <PaginationLink href={buildLink(i)} isActive={props.page === i}>
+            <PaginationButton
+              // href={buildLink(i)}
+              onClick={() => props.onPageChange(i)}
+              isActive={props.page === i}
+            >
               {i}
-            </PaginationLink>
+            </PaginationButton>
           </PaginationItem>
         );
       }
@@ -110,9 +124,13 @@ function PaginationWithLinks(props: PaginationWithLinksProps) {
 
       items.push(
         <PaginationItem key={totalPageCount}>
-          <PaginationLink href={buildLink(totalPageCount)} isActive={props.page === totalPageCount}>
+          <PaginationButton
+            // href={buildLink(totalPageCount)}
+            onClick={() => props.onPageSizeChange(totalPageCount)}
+            isActive={props.page === totalPageCount}
+          >
             {totalPageCount}
-          </PaginationLink>
+          </PaginationButton>
         </PaginationItem>
       );
     }
@@ -135,7 +153,8 @@ function PaginationWithLinks(props: PaginationWithLinksProps) {
         <PaginationContent className="max-sm:gap-0">
           <PaginationItem>
             <PaginationPrevious
-              href={buildLink(Math.max(props.page - 1, 1))}
+              // href={buildLink(Math.max(props.page - 1, 1))}
+              onClick={() => props.onPageChange(Math.max(props.page - 1, 1))}
               aria-disabled={props.page === 1}
               tabIndex={props.page === 1 ? -1 : undefined}
               className={props.page === 1 ? "pointer-events-none opacity-50" : undefined}
@@ -144,7 +163,8 @@ function PaginationWithLinks(props: PaginationWithLinksProps) {
           {renderPageNumbers()}
           <PaginationItem>
             <PaginationNext
-              href={buildLink(Math.min(props.page + 1, totalPageCount))}
+              // href={buildLink(Math.min(props.page + 1, totalPageCount))}
+              onClick={() => props.onPageChange(Math.max(props.page + 1, totalPageCount))}
               aria-disabled={props.page === totalPageCount}
               tabIndex={props.page === totalPageCount ? -1 : undefined}
               className={props.page === totalPageCount ? "pointer-events-none opacity-50" : undefined}
@@ -185,4 +205,4 @@ function SelectRowsPerPage({
   );
 }
 
-export { PaginationWithLinks };
+export { PaginationWithButtons };

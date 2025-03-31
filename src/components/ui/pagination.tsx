@@ -48,9 +48,28 @@ function PaginationLink({ className, isActive, size = "icon", ...props }: Pagina
   );
 }
 
-function PaginationPrevious({ className, ...props }: React.ComponentProps<typeof PaginationLink>) {
+type PaginationButtonProps = {
+  isActive?: boolean;
+} & Pick<React.ComponentProps<typeof Button>, "size"> &
+  React.ComponentProps<typeof Button>;
+
+function PaginationButton({ className, isActive, size = "icon", ...props }: PaginationButtonProps) {
   return (
-    <PaginationLink
+    <Button
+      aria-current={isActive ? "page" : undefined}
+      data-slot="pagination-link"
+      data-active={isActive}
+      size={size}
+      className={className}
+      variant={isActive ? "outline" : "ghost"}
+      {...props}
+    />
+  );
+}
+
+function PaginationPrevious({ className, ...props }: React.ComponentProps<typeof PaginationButton>) {
+  return (
+    <PaginationButton
       aria-label="Go to previous page"
       size="default"
       className={cn("gap-1 px-2.5 sm:pl-2.5", className)}
@@ -58,13 +77,13 @@ function PaginationPrevious({ className, ...props }: React.ComponentProps<typeof
     >
       <ChevronLeftIcon />
       <span className="hidden sm:block">Previous</span>
-    </PaginationLink>
+    </PaginationButton>
   );
 }
 
-function PaginationNext({ className, ...props }: React.ComponentProps<typeof PaginationLink>) {
+function PaginationNext({ className, ...props }: React.ComponentProps<typeof PaginationButton>) {
   return (
-    <PaginationLink
+    <PaginationButton
       aria-label="Go to next page"
       size="default"
       className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
@@ -72,7 +91,7 @@ function PaginationNext({ className, ...props }: React.ComponentProps<typeof Pag
     >
       <span className="hidden sm:block">Next</span>
       <ChevronRightIcon />
-    </PaginationLink>
+    </PaginationButton>
   );
 }
 
@@ -92,6 +111,7 @@ function PaginationEllipsis({ className, ...props }: React.ComponentProps<"span"
 
 export {
   Pagination,
+  PaginationButton,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
