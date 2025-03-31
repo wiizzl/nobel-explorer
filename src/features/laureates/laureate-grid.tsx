@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { parseAsInteger, useQueryState } from "nuqs";
 
+import { PaginationWithLinks } from "@/components/ui/pagination-with-links";
+
 import { LaureateCard, LaureateCardSkeleton } from "@/features/laureates/laureate-card";
 import { LaureateFilter } from "@/features/laureates/laureate-filter";
 
@@ -113,9 +115,14 @@ const LaureateGrid = () => {
             </Link>
           ))}
         </div>
-
-        // TODO: Add pagination
       )}
+
+      <PaginationWithLinks
+        page={page}
+        pageSize={pageSize}
+        totalCount={data?.meta?.count || 0}
+        pageSizeSelectOptions={{ pageSizeOptions: [10, 25, 50, 100] }}
+      />
     </div>
   );
 };
