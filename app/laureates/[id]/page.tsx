@@ -41,7 +41,7 @@ export default async function LaureatePage(props: LaureatePageProps) {
           <div className="space-y-3">
             <div className="w-full flex items-center justify-between">
               <div className="flex items-baseline gap-x-3.5">
-                <h1 className="text-4xl">{laureateName}</h1>
+                <h1 className="text-2xl line-clamp-1 md:text-4xl">{laureateName}</h1>
                 {flag && (
                   <span title={laureate.birth?.place?.country?.en} className="text-xl">
                     {flag}
@@ -49,7 +49,7 @@ export default async function LaureatePage(props: LaureatePageProps) {
                 )}
               </div>
               {laureate?.wikidata?.url && (
-                <Button variant="outline" size="lg" asChild>
+                <Button variant="outline" asChild>
                   <Link href={laureate.wikipedia?.english || "#"} target="_blank">
                     <BookOpen />
                     Wikipedia
@@ -86,7 +86,7 @@ export default async function LaureatePage(props: LaureatePageProps) {
                   <AccordionItem value="personal-informations">
                     <AccordionTrigger>Display more informations</AccordionTrigger>
                     <AccordionContent>
-                      <div className="flex gap-x-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <Card className="w-full">
                           <CardHeader>
                             <CardTitle className="text-lg">Birth and Death informations</CardTitle>
@@ -141,7 +141,7 @@ export default async function LaureatePage(props: LaureatePageProps) {
             {laureate?.nobelPrizes?.map((item, index) => (
               <Card key={index}>
                 <CardHeader className="border-b">
-                  <CardTitle className="flex items-center gap-x-1.5 text-xl">
+                  <CardTitle className="flex items-center gap-x-1.5 text-lg sm:text-xl">
                     <Award className="size-5" />
                     {item.categoryFullName?.en}
                   </CardTitle>
@@ -150,20 +150,20 @@ export default async function LaureatePage(props: LaureatePageProps) {
                 <CardContent className="space-y-5">
                   <div>
                     <h2 className="text-sm text-muted-foreground">Motivation</h2>
-                    <p className="italic text-lg">"{item.motivation?.en}"</p>
+                    <p className="italic text-sm md:text-lg">"{item.motivation?.en}"</p>
                   </div>
-                  <div className="flex w-full justify-between pr-25">
+                  <div className="flex w-full justify-between sm:pr-25">
                     <div>
                       <h2 className="text-sm text-muted-foreground">Award Year</h2>
-                      <p className="text-lg">{item.awardYear}</p>
+                      <p className="text-sm md:text-lg">{item.awardYear}</p>
                     </div>
                     <div>
                       <h2 className="text-sm text-muted-foreground">Prize Portion</h2>
-                      <p className="text-lg">{item.portion} of the prize</p>
+                      <p className="text-sm md:text-lg">{item.portion} of the prize</p>
                     </div>
                     <div>
                       <h2 className="text-sm text-muted-foreground">Prize Amount</h2>
-                      <p className="text-lg">
+                      <p className="text-sm md:text-lg">
                         {new Intl.NumberFormat("en-US", {
                           style: "currency",
                           currency: "USD",
@@ -175,7 +175,7 @@ export default async function LaureatePage(props: LaureatePageProps) {
                   {item.affiliations && item.affiliations.length > 0 && (
                     <div>
                       <h2 className="text-sm text-muted-foreground">Affiliation</h2>
-                      <div className="flex gap-x-2">
+                      <div className="flex gap-x-2 text-sm md:text-base">
                         {item.affiliations.map((affiliation, index) => (
                           <p key={index}>
                             {affiliation.name?.en} - {affiliation.locationString?.en}
@@ -185,7 +185,7 @@ export default async function LaureatePage(props: LaureatePageProps) {
                     </div>
                   )}
                 </CardContent>
-                <CardFooter className="flex justify-end gap-x-2 border-t">
+                <CardFooter className="flex justify-center md:justify-end gap-x-2 border-t">
                   <Button variant="outline" size="sm" asChild>
                     <Link href={`/prizes/${item.category?.en?.slice(0, 3).toLowerCase()}?year=${item.awardYear}`}>
                       <Link2 />
