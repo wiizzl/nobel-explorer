@@ -74,7 +74,7 @@ const PrizeGrid = () => {
       {data && data.nobelPrizes?.length !== 0 && (
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {data.nobelPrizes?.map((item, index) => (
-            <Link href={`/prizes/${item.category?.en?.slice(0, 3).toLowerCase()}/${item.awardYear}`} key={index}>
+            <Link href={`/prizes/${item.category?.en?.slice(0, 3).toLowerCase()}?year=${item.awardYear}`} key={index}>
               <PrizeCard prize={item} />
             </Link>
           ))}

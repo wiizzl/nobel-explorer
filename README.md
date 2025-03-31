@@ -8,16 +8,33 @@
 
 ## 🛠️ Tech stack
 
-- [bun](https://bun.sh/) : a fast all-in-one JS runtime
-- [Next.js](https://nextjs.org/) : the React framework
-- [TailwindCSS](https://tailwindcss.com/) : the CSS framework
-- [TanStack Query](https://tanstack.com/query/latest) : an asynchronous state management
+- [bun](https://bun.sh) : fast all-in-one JS runtime
+- [Next.js](https://nextjs.org) : React framework
+- [TailwindCSS](https://tailwindcss.com) : CSS framework
+- [TanStack Query](https://tanstack.com/query/latest) : asynchronous state manager
+- [nuqs](https://nuqs.47ng.com) : type-safe search params state manager
+- [Radix UI](https://www.radix-ui.com) : accessible UI components
+- [clsx](https://github.com/lukeed/clsx) : utility for conditional classNames
+- [tailwind-merge](https://github.com/dcastil/tailwind-merge) : merge Tailwind CSS classes
+- [lucide-react](https://lucide.dev) : icon library for React
+- [motion](https://motion.dev) : animation library
 
 ## 🔨 Tools used
 
-- [Swagger TS API](https://github.com/acacode/swagger-typescript-api/) : to generate types from API Swagger JSON
-- TODO
+- [Prettier](https://prettier.io/) : code formatter
+- [ESLint](https://eslint.org/) : linting tool for JavaScript and TypeScript
+- [PostCSS](https://postcss.org/) : CSS processing tool
+- [Turbopack](https://turbo.build/pack) : fast bundler for development
+- [Swagger TS API](https://github.com/acacode/swagger-typescript-api) : TS types generator from Swagger doc
 
 ## ✨ Features
 
-- TODO
+- [x] Display laureates and prizes with pagination
+- [x] Add advanced filter for laureates and prizes
+- [ ] View detailed information about each laureate, including their achievements
+- [x] Responsive
+- [x] Type-safe query management with `nuqs`
+- [x] Fast and efficient data fetching using `TanStack Query`
+- [x] Accessible and reusable UI components with Radix UI (shadcn/ui)
+- [ ] Intuitive animations with `motion`
+- [x] Clean and maintainable code with Prettier and ESLint
