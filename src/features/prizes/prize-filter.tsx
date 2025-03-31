@@ -60,7 +60,7 @@ const PrizeFilter = (props: PrizeFilterProps) => {
             <Separator />
             <div className="overflow-y-auto space-y-5 no-scrollbar">
               <div className="space-y-2">
-                <Label htmlFor="gender-filter">Sort</Label>
+                <Label htmlFor="sort-filter">Sort (year)</Label>
                 <Select value={filters.sort} onValueChange={(value) => setFilters({ sort: value })}>
                   <SelectTrigger id="sort-filter">
                     <SelectValue placeholder="Descending" />

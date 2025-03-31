@@ -60,6 +60,19 @@ const LaureateFilter = (props: LaureateFilterProps) => {
             <Separator />
             <div className="overflow-y-auto space-y-5 no-scrollbar">
               <div className="space-y-2">
+                <Label htmlFor="sort-filter">Sort (name)</Label>
+                <Select value={filters.sort} onValueChange={(value) => setFilters({ sort: value })}>
+                  <SelectTrigger id="sort-filter">
+                    <SelectValue placeholder="Ascending" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="asc">Ascending</SelectItem>
+                    <SelectItem value="desc">Descending</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
                 <Label htmlFor="gender-filter">Gender</Label>
                 <Select value={filters.gender} onValueChange={(value) => setFilters({ gender: value })}>
                   <SelectTrigger id="gender-filter">
