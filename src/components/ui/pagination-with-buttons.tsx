@@ -126,7 +126,7 @@ function PaginationWithButtons(props: PaginationWithButtonsProps) {
         <PaginationItem key={totalPageCount}>
           <PaginationButton
             // href={buildLink(totalPageCount)}
-            onClick={() => props.onPageSizeChange(totalPageCount)}
+            onClick={() => props.onPageChange(totalPageCount)}
             isActive={props.page === totalPageCount}
           >
             {totalPageCount}
@@ -154,7 +154,7 @@ function PaginationWithButtons(props: PaginationWithButtonsProps) {
           <PaginationItem>
             <PaginationPrevious
               // href={buildLink(Math.max(props.page - 1, 1))}
-              onClick={() => props.onPageChange(Math.max(props.page - 1, 1))}
+              onClick={() => props.onPageChange(props.page - 1)}
               aria-disabled={props.page === 1}
               tabIndex={props.page === 1 ? -1 : undefined}
               className={props.page === 1 ? "pointer-events-none opacity-50" : undefined}
@@ -164,7 +164,7 @@ function PaginationWithButtons(props: PaginationWithButtonsProps) {
           <PaginationItem>
             <PaginationNext
               // href={buildLink(Math.min(props.page + 1, totalPageCount))}
-              onClick={() => props.onPageChange(Math.max(props.page + 1, totalPageCount))}
+              onClick={() => props.onPageChange(props.page + 1)}
               aria-disabled={props.page === totalPageCount}
               tabIndex={props.page === totalPageCount ? -1 : undefined}
               className={props.page === totalPageCount ? "pointer-events-none opacity-50" : undefined}
