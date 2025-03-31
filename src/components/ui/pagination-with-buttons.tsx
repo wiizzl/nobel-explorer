@@ -1,8 +1,5 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { type ReactNode, useCallback } from "react";
-
 import {
   Pagination,
   PaginationButton,
@@ -30,36 +27,23 @@ type PaginationWithButtonsProps = {
 };
 
 function PaginationWithButtons(props: PaginationWithButtonsProps) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
   const totalPageCount = Math.ceil(props.totalCount / props.pageSize);
 
-  // const buildLink = useCallback(
-  //   (newPage: number) => {
-  //     const key = props.pageSearchParam || "page";
-  //     if (!searchParams) return `${pathname}?${key}=${newPage}`;
-  //     const newSearchParams = new URLSearchParams(searchParams);
-  //     newSearchParams.set(key, String(newPage));
-  //     return `${pathname}?${newSearchParams.toString()}`;
-  //   },
-  //   [searchParams, pathname, props.pageSearchParam]
-  // );
-
-  const navToPageSize = useCallback(
-    (newPageSize: number) => {
-      const key = props.pageSizeSelectOptions?.pageSizeSearchParam || "pageSize";
-      const newSearchParams = new URLSearchParams(searchParams || undefined);
-      newSearchParams.set(key, String(newPageSize));
-      newSearchParams.delete(props.pageSearchParam || "page"); // Clear the page number when changing page size
-      router.push(`${pathname}?${newSearchParams.toString()}`);
+  /*
+  const buildLink = useCallback(
+    (newPage: number) => {
+      const key = props.pageSearchParam || "page";
+      if (!searchParams) return `${pathname}?${key}=${newPage}`;
+      const newSearchParams = new URLSearchParams(searchParams);
+      newSearchParams.set(key, String(newPage));
+      return `${pathname}?${newSearchParams.toString()}`;
     },
-    [searchParams, pathname, props.pageSearchParam, props.pageSizeSelectOptions?.pageSizeSearchParam, router]
+    [searchParams, pathname, props.pageSearchParam]
   );
+  */
 
   const renderPageNumbers = () => {
-    const items: ReactNode[] = [];
+    const items: React.ReactNode[] = [];
     const maxVisiblePages = 5;
 
     if (totalPageCount <= maxVisiblePages) {
@@ -144,7 +128,7 @@ function PaginationWithButtons(props: PaginationWithButtonsProps) {
         <div className="flex flex-col gap-4 flex-1">
           <SelectRowsPerPage
             options={props.pageSizeSelectOptions.pageSizeOptions}
-            setPageSize={navToPageSize}
+            setPageSize={props.onPageSizeChange}
             pageSize={props.pageSize}
           />
         </div>
@@ -176,25 +160,17 @@ function PaginationWithButtons(props: PaginationWithButtonsProps) {
   );
 }
 
-function SelectRowsPerPage({
-  options,
-  setPageSize,
-  pageSize,
-}: {
-  options: number[];
-  setPageSize: (newSize: number) => void;
-  pageSize: number;
-}) {
+function SelectRowsPerPage(props: { options: number[]; setPageSize: (newSize: number) => void; pageSize: number }) {
   return (
     <div className="flex items-center gap-4">
       <span className="whitespace-nowrap text-sm">Rows per page</span>
 
-      <Select value={String(pageSize)} onValueChange={(value) => setPageSize(Number(value))}>
+      <Select value={String(props.pageSize)} onValueChange={(value) => props.setPageSize(Number(value))}>
         <SelectTrigger>
-          <SelectValue placeholder="Select page size">{String(pageSize)}</SelectValue>
+          <SelectValue placeholder="Select page size">{String(props.pageSize)}</SelectValue>
         </SelectTrigger>
         <SelectContent>
-          {options.map((option) => (
+          {props.options.map((option) => (
             <SelectItem key={option} value={String(option)}>
               {option}
             </SelectItem>
