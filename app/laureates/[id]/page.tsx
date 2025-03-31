@@ -142,7 +142,7 @@ export default async function LaureatePage(props: LaureatePageProps) {
               <Card key={index}>
                 <CardHeader className="border-b">
                   <CardTitle className="flex items-center gap-x-1.5 text-lg sm:text-xl">
-                    <Award className="size-5" />
+                    <Award className="size-5 hidden sm:block" />
                     {item.categoryFullName?.en}
                   </CardTitle>
                   <CardDescription>Awarded on {formatDate(item.dateAwarded)}</CardDescription>
