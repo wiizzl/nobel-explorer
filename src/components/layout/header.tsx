@@ -7,7 +7,7 @@ import { config } from "@/config";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-50 w-full select-none border-b bg-background/65 py-3 backdrop-blur-xs mb-3">
+    <header className="sticky top-0 z-50 w-full select-none border-b bg-background/65 py-3 backdrop-blur-xs mb-8">
       <MaxWidthWrapper className="flex items-center justify-between">
         <Link href="/" className="flex gap-x-4 items-center">
           <Image src="/images/logo.png" alt={config.title} width={40} height={40} />

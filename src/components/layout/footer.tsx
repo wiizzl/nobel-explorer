@@ -6,7 +6,7 @@ import { config } from "@/config";
 
 const Footer = () => {
   return (
-    <footer className="z-50 border-t py-8 mt-3 md:text-start text-center">
+    <footer className="z-50 border-t py-8 mt-6 md:text-start text-center">
       <MaxWidthWrapper>
         <Link href="/" className="font-nobel text-2xl">
           {config.title}

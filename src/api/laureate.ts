@@ -2,7 +2,7 @@
 
 import { config } from "@/config";
 
-import { Laureate, LaureateResult } from "@/types/api";
+import { Laureate } from "@/types/api";
 
 const fetchLaureate = async (id: Laureate["id"]) => {
   const response = await fetch(`${config.api}/laureate/${id}`);
@@ -11,7 +11,9 @@ const fetchLaureate = async (id: Laureate["id"]) => {
     throw new Error(`Error while fetching data: ${response.statusText}`);
   }
 
-  return response.json() as LaureateResult;
+  const data = await response.json();
+
+  return data as Laureate[];
 };
 
 export { fetchLaureate };
