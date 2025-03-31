@@ -500,8 +500,8 @@ export class HttpClient<SecurityDataType = unknown> {
           property instanceof Blob
             ? property
             : typeof property === "object" && property !== null
-            ? JSON.stringify(property)
-            : `${property}`
+              ? JSON.stringify(property)
+              : `${property}`,
         );
         return formData;
       }, new FormData()),
@@ -651,7 +651,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         /** Language of output if format is csv (Default = en) */
         csvLang?: "en" | "se" | "no";
       },
-      params: RequestParams = {}
+      params: RequestParams = {},
     ) =>
       this.request<NobelPrizesResult, Error>({
         path: `/nobelPrizes`,
@@ -671,7 +671,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     nobelPrizeDetail: (
       category: "che" | "eco" | "lit" | "pea" | "phy" | "med",
       year: number,
-      params: RequestParams = {}
+      params: RequestParams = {},
     ) =>
       this.request<NobelPrizeResult, Error>({
         path: `/nobelPrize/${category}/${year}`,
@@ -813,7 +813,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
         /** Language if output format is csv (default = en). */
         csvLang?: "en" | "se" | "no";
       },
-      params: RequestParams = {}
+      params: RequestParams = {},
     ) =>
       this.request<LaureatesResult, Error>({
         path: `/laureates`,
