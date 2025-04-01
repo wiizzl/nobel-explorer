@@ -1,5 +1,7 @@
 import { MaxWidthWrapper } from "@/components/layout/max-width-wrapper";
 import { AnimatedCards } from "@/components/motion/animated-cards";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default async function HomePage() {
   const cards = [
@@ -27,11 +29,17 @@ export default async function HomePage() {
   return (
     <main className="min-h-screen">
       <section>
-        <MaxWidthWrapper className="text-center">
-          <div className="mb-20">
-            <h1 className="text-5xl">Explore Nobel informations with ease</h1>
+        <MaxWidthWrapper className="text-center space-y-12 md:space-y-20 overflow-hidden">
+          <h1 className="text-5xl">Explore Nobel informations with ease</h1>
+          <AnimatedCards cards={cards} autoplay />
+          <div className="flex gap-x-6 justify-center">
+            <Button size="lg" asChild>
+              <Link href="/laureates">Search laureates</Link>
+            </Button>
+            <Button size="lg" variant="secondary" asChild>
+              <Link href="/prizes">Search prizes</Link>
+            </Button>
           </div>
-          <AnimatedCards cards={cards} autoplay />;
         </MaxWidthWrapper>
       </section>
     </main>

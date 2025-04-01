@@ -38,7 +38,7 @@ const AnimatedCards = (props: AnimatedCardsProps) => {
 
   return (
     <div className="mx-auto max-w-sm md:max-w-4xl">
-      <div className="relative grid grid-cols-1 gap-x-20 gap-y-8 md:grid-cols-2">
+      <div className="relative grid grid-cols-1 gap-x-14 gap-y-8 md:grid-cols-2">
         <div className="relative h-80 w-full">
           <AnimatePresence>
             {props.cards.map((item, index) => (
