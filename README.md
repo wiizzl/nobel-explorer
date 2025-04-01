@@ -27,10 +27,11 @@
 
 ## ✨ Features
 
-- [ ] A clean landing page with animations using `motion`
+- [x] A landing page with animations using `motion`
 - [x] Display laureates and prizes with pagination
 - [x] Add advanced filter for laureates and prizes
-- [ ] View detailed information about each laureate, including their achievements
+- [x] View detailed information about each laureate
+- [ ] View detailed information about each prize
 - [x] Responsive
 - [x] Type-safe query management with `nuqs`
 - [x] Fast and efficient data fetching using `TanStack Query`
