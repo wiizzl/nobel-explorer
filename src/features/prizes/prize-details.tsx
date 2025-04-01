@@ -2,6 +2,8 @@
 
 import { useQuery } from "@tanstack/react-query";
 
+import { Loader } from "@/components/layout/loader";
+
 import { fetchPrize } from "@/api/prize";
 
 import { NobelPrize } from "@/types/api";
@@ -21,7 +23,7 @@ const PrizeDetails = (props: PrizeDetailsProps) => {
 
   return (
     <div className="space-y-4">
-      {isLoading && <div>loading</div>}
+      {isLoading && <Loader />}
 
       {isError && <p className="text-destructive text-xl">Error: {error.message}</p>}
 

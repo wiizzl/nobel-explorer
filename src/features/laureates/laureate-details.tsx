@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Award, BookOpen, Calendar, ExternalLink, Globe, Link2, MapPin, User } from "lucide-react";
 import Link from "next/link";
 
+import { Loader } from "@/components/layout/loader";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -34,7 +35,7 @@ const LaureateDetails = (props: LaureateDetailsProps) => {
 
   return (
     <div className="space-y-4">
-      {isLoading && <div>loading</div>}
+      {isLoading && <Loader />}
 
       {isError && <p className="text-destructive text-xl">Error: {error.message}</p>}
 
