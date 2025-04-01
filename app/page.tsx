@@ -50,7 +50,7 @@ export default async function HomePage() {
     <main className="min-h-screen">
       <section>
         <MaxWidthWrapper className="text-center space-y-12 md:space-y-20 overflow-hidden">
-          <h1 className="text-5xl">Explore Nobel informations with ease</h1>
+          <h1 className="text-5xl">Explore Nobel information with ease</h1>
           <AnimatedCards cards={cards} autoplay />
           <div className="flex gap-x-6 justify-center">
             <Button size="lg" asChild>

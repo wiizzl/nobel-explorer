@@ -86,13 +86,13 @@ const LaureateDetails = (props: LaureateDetailsProps) => {
             {!isOrg && (
               <div className="-mt-1">
                 <Accordion type="single" collapsible>
-                  <AccordionItem value="personal-informations">
-                    <AccordionTrigger>Display more informations</AccordionTrigger>
+                  <AccordionItem value="personal-information">
+                    <AccordionTrigger>Display more information</AccordionTrigger>
                     <AccordionContent>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <Card className="w-full">
                           <CardHeader>
-                            <CardTitle className="text-lg">Birth and Death informations</CardTitle>
+                            <CardTitle className="text-lg">Birth and Death information</CardTitle>
                           </CardHeader>
                           <CardContent className="flex justify-between">
                             <div className="text-muted-foreground space-y-2">
@@ -121,7 +121,7 @@ const LaureateDetails = (props: LaureateDetailsProps) => {
                         </Card>
                         <Card className="w-full">
                           <CardHeader>
-                            <CardTitle className="text-lg">Other informations</CardTitle>
+                            <CardTitle className="text-lg">Other information</CardTitle>
                           </CardHeader>
                           <CardContent className="flex justify-between">
                             <div className="text-muted-foreground space-y-2">
