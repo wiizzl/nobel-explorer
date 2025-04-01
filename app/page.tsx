@@ -1,7 +1,8 @@
+import Link from "next/link";
+
 import { MaxWidthWrapper } from "@/components/layout/max-width-wrapper";
 import { AnimatedCards } from "@/components/motion/animated-cards";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 export default async function HomePage() {
   const cards = [
@@ -55,7 +56,7 @@ export default async function HomePage() {
             <Button size="lg" asChild>
               <Link href="/laureates">Search laureates</Link>
             </Button>
-            <Button size="lg" variant="secondary" asChild>
+            <Button size="lg" variant="outline" asChild>
               <Link href="/prizes">Search prizes</Link>
             </Button>
           </div>
