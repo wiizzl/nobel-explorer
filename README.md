@@ -14,9 +14,7 @@
 - [TanStack Query](https://tanstack.com/query/latest) : asynchronous state manager
 - [nuqs](https://nuqs.47ng.com) : type-safe search params state manager
 - [Radix UI](https://radix-ui.com) : accessible UI components
-- [clsx](https://github.com/lukeed/clsx) : utility for conditional classNames
-- [tailwind-merge](https://github.com/dcastil/tailwind-merge) : merge Tailwind CSS classes
-- [lucide-react](https://lucide.dev) : icon library for React
+- [lucide](https://lucide.dev) : icon library
 - [motion](https://motion.dev) : animation library
 
 ## 🔨 Tools used
