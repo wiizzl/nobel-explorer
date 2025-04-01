@@ -103,7 +103,8 @@ const AnimatedCards = (props: AnimatedCardsProps) => {
             <h3 className="text-2xl font-bold">{props.cards[active].name}</h3>
             <p className="text-sm text-muted-foreground">{props.cards[active].designation}</p>
             <motion.p className="mt-5 text-lg text-muted-foreground">
-              {props.cards[active].quote.split(" ").map((word, index) => (
+              "
+              {props.cards[active].quote.split(" ").map((item, index) => (
                 <motion.span
                   key={index}
                   initial={{
@@ -121,11 +122,12 @@ const AnimatedCards = (props: AnimatedCardsProps) => {
                     ease: "easeInOut",
                     delay: 0.02 * index,
                   }}
-                  className="inline-block"
+                  className="inline-block italic"
                 >
-                  {word}&nbsp;
+                  {item}&nbsp;
                 </motion.span>
               ))}
+              "
             </motion.p>
           </motion.div>
         </div>

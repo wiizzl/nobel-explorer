@@ -13,6 +13,12 @@ export default async function HomePage() {
       src: "/images/laureates/marie_curie.jpg",
     },
     {
+      quote: "For her intense poetic prose that confronts historical traumas and exposes the fragility of human life",
+      name: "Han Kang",
+      designation: "The Nobel Prize in Literature (2024)",
+      src: "/images/laureates/han_kang.jpg",
+    },
+    {
       quote: "For his non-violent struggle for civil rights for the Afro-American population",
       name: "Martin Luther King Jr.",
       designation: "The Nobel Prize in Peace (1964)",
@@ -23,6 +29,19 @@ export default async function HomePage() {
       name: "Philipp Lenard",
       designation: "The Nobel Prize in Physics (1905)",
       src: "/images/laureates/philipp_lenard.jpg",
+    },
+    {
+      quote: "For studies of how institutions are formed and affect prosperity",
+      name: "Simon Johnson",
+      designation: "The Nobel Prize in Economic Sciences (2024)",
+      src: "/images/laureates/simon_johnson.jpg",
+    },
+    {
+      quote:
+        "For his important literary production, which with clear-sighted earnestness illuminates the problems of the human conscience in our times",
+      name: "Albert Camus",
+      designation: "The Nobel Prize in Literature (1957)",
+      src: "/images/laureates/albert_camus.jpg",
     },
   ];
 
