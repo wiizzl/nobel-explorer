@@ -4,7 +4,7 @@ import { createLoader, parseAsInteger, type SearchParams } from "nuqs/server";
 
 import { MaxWidthWrapper } from "@/components/layout/max-width-wrapper";
 
-import { fetchPrize } from "@/api/prize";
+import { PrizeDetails } from "@/features/prizes/prize-details";
 
 export const metadata: Metadata = {
   title: "Laureate",
@@ -25,12 +25,12 @@ export default async function PrizePage(props: LaureatePageProps) {
 
   if (!category || !year) notFound();
 
-  const prize = await fetchPrize(category, year);
-
   return (
     <main className="min-h-screen">
       <section>
-        <MaxWidthWrapper>{JSON.stringify(prize)}</MaxWidthWrapper>
+        <MaxWidthWrapper>
+          <PrizeDetails category={category} year={year} />
+        </MaxWidthWrapper>
       </section>
     </main>
   );

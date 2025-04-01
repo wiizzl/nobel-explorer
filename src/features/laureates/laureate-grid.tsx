@@ -54,7 +54,7 @@ const LaureateGrid = () => {
       fetchLaureates(
         page.page,
         page.pageSize,
-        Object.entries(debouncedFilters).map(([key, value]) => ({ key, value }))
+        Object.entries(debouncedFilters).map(([key, value]) => ({ key, value })),
       ),
   });
 
