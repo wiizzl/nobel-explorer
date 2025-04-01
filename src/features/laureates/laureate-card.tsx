@@ -34,7 +34,10 @@ const LaureateCard = (props: LaureateCardProps) => {
       <CardContent className="flex flex-grow justify-between items-end">
         <div className="flex items-center gap-1.5">
           <Award className="size-4 text-muted-foreground" />
-          <span className="text-sm text-muted-foreground line-clamp-1 capitalize">
+          <span
+            title={`${latestPrize?.categoryFullName?.en} - ${latestPrize?.awardYear}`}
+            className="text-sm text-muted-foreground line-clamp-1 capitalize"
+          >
             {latestPrize?.category?.en} - {latestPrize?.awardYear}
           </span>
           {(props.laureate.nobelPrizes?.length ?? 0) > 1 && (
