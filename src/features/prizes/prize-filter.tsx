@@ -73,17 +73,6 @@ const PrizeFilter = (props: PrizeFilterProps) => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="year-to-filter">Year To</Label>
-                <Input
-                  type="number"
-                  id="year-to-filter"
-                  placeholder="Enter year"
-                  value={filters.yearTo}
-                  onChange={(e) => setFilters({ yearTo: e.target.value })}
-                />
-              </div>
-
-              <div className="space-y-2">
                 <Label htmlFor="nobel-prize-category-filter">Nobel Prize Category</Label>
                 <Select
                   value={filters.nobelPrizeCategory}
@@ -102,6 +91,17 @@ const PrizeFilter = (props: PrizeFilterProps) => {
                     <SelectItem value="med">Medicine</SelectItem>
                   </SelectContent>
                 </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="year-to-filter">Year To</Label>
+                <Input
+                  type="number"
+                  id="year-to-filter"
+                  placeholder="Enter year..."
+                  value={filters.yearTo}
+                  onChange={(e) => setFilters({ yearTo: e.target.value })}
+                />
               </div>
             </div>
             <div className="flex justify-between mt-3">

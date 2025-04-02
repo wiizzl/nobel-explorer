@@ -88,17 +88,6 @@ const LaureateFilter = (props: LaureateFilterProps) => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="nobel-prize-year-filter">Nobel Prize Year</Label>
-                <Input
-                  type="number"
-                  id="nobel-prize-year-filter"
-                  placeholder="Enter year"
-                  value={filters.nobelPrizeYear}
-                  onChange={(e) => setFilters({ nobelPrizeYear: e.target.value })}
-                />
-              </div>
-
-              <div className="space-y-2">
                 <Label htmlFor="nobel-prize-category-filter">Nobel Prize Category</Label>
                 <Select
                   value={filters.nobelPrizeCategory}
@@ -120,22 +109,33 @@ const LaureateFilter = (props: LaureateFilterProps) => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="birth-date-filter">Birth Date</Label>
+                <Label htmlFor="nobel-prize-year-filter">Nobel Prize Year</Label>
+                <Input
+                  type="number"
+                  id="nobel-prize-year-filter"
+                  placeholder="Enter year..."
+                  value={filters.nobelPrizeYear}
+                  onChange={(e) => setFilters({ nobelPrizeYear: e.target.value })}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="birth-date-filter">Birth Year</Label>
                 <Input
                   type="number"
                   id="birth-date-filter"
-                  placeholder="Enter year"
+                  placeholder="Enter year..."
                   value={filters.birthDate}
                   onChange={(e) => setFilters({ birthDate: e.target.value })}
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="birth-date-to-filter">Birth Date To</Label>
+                <Label htmlFor="birth-date-to-filter">Birth Year To</Label>
                 <Input
                   type="number"
                   id="birth-date-to-filter"
-                  placeholder="Enter year"
+                  placeholder="Enter year..."
                   value={filters.birthDateTo}
                   onChange={(e) => setFilters({ birthDateTo: e.target.value })}
                 />
@@ -146,7 +146,7 @@ const LaureateFilter = (props: LaureateFilterProps) => {
                 <Input
                   type="number"
                   id="death-date-filter"
-                  placeholder="Enter year"
+                  placeholder="Enter year..."
                   value={filters.deathDate}
                   onChange={(e) => setFilters({ deathDate: e.target.value })}
                 />
@@ -157,9 +157,20 @@ const LaureateFilter = (props: LaureateFilterProps) => {
                 <Input
                   type="number"
                   id="death-date-to-filter"
-                  placeholder="Enter year"
+                  placeholder="Enter year..."
                   value={filters.deathDateTo}
                   onChange={(e) => setFilters({ deathDateTo: e.target.value })}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="founded-date-filter">Founded Year</Label>
+                <Input
+                  type="text"
+                  id="founded-date-filter"
+                  placeholder="Enter year..."
+                  value={filters.foundedDate}
+                  onChange={(e) => setFilters({ foundedDate: e.target.value })}
                 />
               </div>
 
@@ -186,6 +197,17 @@ const LaureateFilter = (props: LaureateFilterProps) => {
               </div>
 
               <div className="space-y-2">
+                <Label htmlFor="founded-city-filter">Founded City</Label>
+                <Input
+                  type="text"
+                  id="founded-city-filter"
+                  placeholder="Enter city..."
+                  value={filters.foundedCity}
+                  onChange={(e) => setFilters({ foundedCity: e.target.value })}
+                />
+              </div>
+
+              <div className="space-y-2">
                 <Label htmlFor="birth-country-filter">Birth Country</Label>
                 <Input
                   type="text"
@@ -204,6 +226,17 @@ const LaureateFilter = (props: LaureateFilterProps) => {
                   placeholder="Enter country..."
                   value={filters.deathCountry}
                   onChange={(e) => setFilters({ deathCountry: e.target.value })}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="founded-country-filter">Founded Country</Label>
+                <Input
+                  type="text"
+                  id="founded-country-filter"
+                  placeholder="Enter country..."
+                  value={filters.foundedCountry}
+                  onChange={(e) => setFilters({ foundedCountry: e.target.value })}
                 />
               </div>
 
@@ -230,11 +263,22 @@ const LaureateFilter = (props: LaureateFilterProps) => {
               </div>
 
               <div className="space-y-2">
+                <Label htmlFor="founded-continent-filter">Founded Continent</Label>
+                <Input
+                  type="text"
+                  id="founded-continent-filter"
+                  placeholder="Enter continent..."
+                  value={filters.foundedContinent}
+                  onChange={(e) => setFilters({ foundedContinent: e.target.value })}
+                />
+              </div>
+
+              <div className="space-y-2">
                 <Label htmlFor="motivation-filter">Motivation</Label>
                 <Input
                   type="text"
                   id="motivation-filter"
-                  placeholder="Enter motivation text..."
+                  placeholder="Enter motivation..."
                   value={filters.motivation}
                   onChange={(e) => setFilters({ motivation: e.target.value })}
                 />
@@ -259,50 +303,6 @@ const LaureateFilter = (props: LaureateFilterProps) => {
                   placeholder="Enter residence..."
                   value={filters.residence}
                   onChange={(e) => setFilters({ residence: e.target.value })}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="founded-date-filter">Founded Year</Label>
-                <Input
-                  type="text"
-                  id="founded-date-filter"
-                  placeholder="Enter year..."
-                  value={filters.foundedDate}
-                  onChange={(e) => setFilters({ foundedDate: e.target.value })}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="founded-city-filter">Founded City</Label>
-                <Input
-                  type="text"
-                  id="founded-city-filter"
-                  placeholder="Enter city..."
-                  value={filters.foundedCity}
-                  onChange={(e) => setFilters({ foundedCity: e.target.value })}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="founded-country-filter">Founded Country</Label>
-                <Input
-                  type="text"
-                  id="founded-country-filter"
-                  placeholder="Enter country..."
-                  value={filters.foundedCountry}
-                  onChange={(e) => setFilters({ foundedCountry: e.target.value })}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="founded-continent-filter">Founded Continent</Label>
-                <Input
-                  type="text"
-                  id="founded-continent-filter"
-                  placeholder="Enter continent..."
-                  value={filters.foundedContinent}
-                  onChange={(e) => setFilters({ foundedContinent: e.target.value })}
                 />
               </div>
             </div>
