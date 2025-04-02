@@ -6,6 +6,16 @@
   <b>Explore Nobel laureates and their achievements with an intuitive interface.</b>
 </p>
 
+## 🖼️ Work experience
+
+I did not create a Figma mockup because I already had a fairly clear idea of where I was going. The large amount of data represented by the Nobel laureates and prizes led me to think of this traditional "grid" layout, even if it meant sacrificing some of the site's aesthetics.
+
+Initially, I thought I would only create a single page for displaying the laureates and prizes, but I became more invested in the project and decided to present it as if it were a real personal project. This started with using a logo for the project, a font associated with the project name, etc.
+
+The site and this presentation are entirely in English. I made this decision after noticing that the API only offered data display in English (and sometimes Spanish for some data, etc.).
+
+I included certain details, such as storing active filters in the page's URL to make it easier to share a search between users, and a small delay between when the user types in a search bar and when the query is sent to the API to avoid unnecessary requests.
+
 ## 🛠️ Tech stack
 
 - [bun](https://bun.sh) : fast all-in-one JS runtime
