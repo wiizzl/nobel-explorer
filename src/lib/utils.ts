@@ -70,4 +70,12 @@ const formatDate = (dateString?: string) => {
   }).format(date);
 };
 
-export { cn, formatDate, getCountryFlag };
+const formatPrice = (price?: number) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(price || 0);
+};
+
+export { cn, formatDate, formatPrice, getCountryFlag };

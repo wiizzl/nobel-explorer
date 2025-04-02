@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
-import { formatDate, getCountryFlag } from "@/lib/utils";
+import { formatDate, formatPrice, getCountryFlag } from "@/lib/utils";
 
 import { fetchLaureate } from "@/api/laureate";
 
@@ -166,13 +166,7 @@ const LaureateDetails = (props: LaureateDetailsProps) => {
                     </div>
                     <div>
                       <h2 className="text-sm text-muted-foreground">Prize Amount</h2>
-                      <p className="text-sm md:text-lg">
-                        {new Intl.NumberFormat("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                          maximumFractionDigits: 0,
-                        }).format(item.prizeAmount || 0)}
-                      </p>
+                      <p className="text-sm md:text-lg">{formatPrice(item.prizeAmount)}</p>
                     </div>
                   </div>
                   {item.affiliations && item.affiliations.length > 0 && (
