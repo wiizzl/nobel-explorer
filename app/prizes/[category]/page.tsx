@@ -7,7 +7,7 @@ import { MaxWidthWrapper } from "@/components/layout/max-width-wrapper";
 import { PrizeDetails } from "@/features/prizes/prize-details";
 
 export const metadata: Metadata = {
-  title: "Laureate",
+  title: "Prize",
 };
 
 type LaureatePageProps = {
